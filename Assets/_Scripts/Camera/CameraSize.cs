@@ -3,22 +3,23 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraSize : MonoBehaviour
 {
-    private Camera camera;
+    private Camera cameraToTune;
 
     private void Awake()
     {
-        camera = GetComponent<Camera>();
-        CheckCameraSize();
+        cameraToTune = GetComponent<Camera>();
+        CameraOrthographicSizeFitter();
     }
 
-    public void CheckCameraSize()
+    public void CameraOrthographicSizeFitter()
     {
         var resolution = Screen.safeArea;
 
         float rate = resolution.height / resolution.width;
 
+        //If the rate is less than 1, then the entire level will be visible.
         rate = Mathf.Max(rate, 1f);
 
-        camera.orthographicSize *= rate;
+        cameraToTune.orthographicSize *= rate;
     }
 }

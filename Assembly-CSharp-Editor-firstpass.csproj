@@ -56,10 +56,10 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Editor\VariableJoystickEditor.cs" />
     <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Editor\FloatingJoystickEditor.cs" />
     <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Editor\JoystickEditor.cs" />
     <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Editor\DynamicJoystickEditor.cs" />
-    <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Editor\VariableJoystickEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\DOTween\Editor\DOTweenEditor.XML" />
@@ -297,14 +297,14 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="DOTweenEditor">
-      <HintPath>Assets\Plugins\DOTween\Editor\DOTweenEditor.dll</HintPath>
-    </Reference>
     <Reference Include="Zenject-usage">
       <HintPath>Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\DOTween\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>Assets\Plugins\DOTween\Editor\DOTweenEditor.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -693,17 +693,17 @@
       <Project>{8494BCDF-C9D9-8450-8BD0-D83618B7EEB2}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
-    <ProjectReference Include="Zenject-Editor.csproj">
-      <Project>{2BE1FE35-FA8C-F559-197A-12ABB64A390A}</Project>
-      <Name>Zenject-Editor</Name>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{C3426E37-4E25-0F55-E947-7649CF59ABDF}</Project>
+      <Name>UniRx</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject.csproj">
       <Project>{EB555643-D392-CAE7-2230-4DA1BA6C7587}</Project>
       <Name>Zenject</Name>
     </ProjectReference>
-    <ProjectReference Include="UniRx.csproj">
-      <Project>{C3426E37-4E25-0F55-E947-7649CF59ABDF}</Project>
-      <Name>UniRx</Name>
+    <ProjectReference Include="Zenject-Editor.csproj">
+      <Project>{2BE1FE35-FA8C-F559-197A-12ABB64A390A}</Project>
+      <Name>Zenject-Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

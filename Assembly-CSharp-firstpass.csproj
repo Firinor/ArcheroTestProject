@@ -57,19 +57,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
-    <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
-    <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Base\Joystick.cs" />
-    <Compile Include="Assets\Plugins\Joystick Pack\Examples\JoystickPlayerExample.cs" />
-    <Compile Include="Assets\Plugins\Joystick Pack\Examples\JoystickSetterExample.cs" />
-    <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
-    <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleSprite.cs" />
-    <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleUI.cs" />
+    <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\Plugins\Joystick Pack\Examples\JoystickSetterExample.cs" />
+    <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
+    <Compile Include="Assets\Plugins\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+    <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\Plugins\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleUtils.cs" />
-    <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets\Plugins\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -702,17 +702,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Zenject-Editor.csproj">
-      <Project>{2BE1FE35-FA8C-F559-197A-12ABB64A390A}</Project>
-      <Name>Zenject-Editor</Name>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{C3426E37-4E25-0F55-E947-7649CF59ABDF}</Project>
+      <Name>UniRx</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject.csproj">
       <Project>{EB555643-D392-CAE7-2230-4DA1BA6C7587}</Project>
       <Name>Zenject</Name>
     </ProjectReference>
-    <ProjectReference Include="UniRx.csproj">
-      <Project>{C3426E37-4E25-0F55-E947-7649CF59ABDF}</Project>
-      <Name>UniRx</Name>
+    <ProjectReference Include="Zenject-Editor.csproj">
+      <Project>{2BE1FE35-FA8C-F559-197A-12ABB64A390A}</Project>
+      <Name>Zenject-Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

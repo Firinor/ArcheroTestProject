@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class FloatingJoystick : Joystick
+public class VisibleFloatingJoystick : Joystick
 {
+    [SerializeField]
     private Vector2 defaultPosition;
 
     protected override void Start()
@@ -19,15 +20,9 @@ public class FloatingJoystick : Joystick
     #region BadCode
     private void SomeFirstCallDebug()
     {
-        //To create PointerEventData, you need to pass an EventSystem object that does not have access to the constructor.
-        //Bypassed the restriction, through inheritance and the addition of a public constructor, through polymorphism.
-        var eventData = new PointerEventData(new CrutchEventSystem(default));
+        var eventData = new PointerEventData(FindObjectOfType<EventSystem>());
         OnPointerDown(eventData);
         OnPointerUp(eventData);
-    }
-    private class CrutchEventSystem : EventSystem
-    {
-        public CrutchEventSystem(bool v) { }
     }
     #endregion
 
