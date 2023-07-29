@@ -21,6 +21,6 @@ public class MainMonoInstaller : MonoInstaller
         //Container.Bind<TimeState>().AsSingle();
         //Container.Bind<AlarmState>().AsSingle();
 
-        //Container.Bind<StateMachine>().AsSingle();
+        //Container.Bind<UnitBehaviorStateMachine>().AsTransient();
     }
 }

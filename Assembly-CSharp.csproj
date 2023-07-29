@@ -58,17 +58,22 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Joystick\VisibleFloatingJoystick.cs" />
     <Compile Include="Assets\_Scripts\Camera\CameraSize.cs" />
-    <Compile Include="Assets\_Scripts\Units\Unit.cs" />
-    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\PlayerMove.cs" />
-    <Compile Include="Assets\_Scripts\Units\Player.cs" />
-    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\Idle.cs" />
-    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\Attack.cs" />
-    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\UnitBehavior.cs" />
-    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\EnemyMove.cs" />
-    <Compile Include="Assets\_Scripts\Units\UnitStats.cs" />
     <Compile Include="Assets\_Scripts\Zenject\ScriptableObjectInstaller.cs" />
+    <Compile Include="Assets\_Scripts\Units\Unit.cs" />
+    <Compile Include="Assets\_Scripts\Units\UnitStats.cs" />
     <Compile Include="Assets\_Scripts\Zenject\MainMonoInstaller.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\EnemyBehaviors\Move.cs" />
+    <Compile Include="Assets\_Scripts\Units\Player.cs" />
     <Compile Include="Assets\_Scripts\Units\Enemy.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\UnitBehavior.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\UnitBehaviorStateMachine.cs" />
+    <Compile Include="Assets\_Scripts\Zenject\UnitsInstaller.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\PlayerBehaviors\Idle.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\PlayerBehaviors\Overwatch.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\PlayerBehaviors\Move.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\PlayerBehaviors\PlayerBehavior.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\PlayerBehaviors\Attack.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviorStateMachine\EnemyBehaviors\EnemyBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\OutlineEffectShader.shader" />

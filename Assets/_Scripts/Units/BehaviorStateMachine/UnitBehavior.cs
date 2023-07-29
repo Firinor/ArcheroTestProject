@@ -4,7 +4,7 @@ public abstract class UnitBehavior : ScriptableObject
 {
     protected Unit unit;
     
-    public virtual void Enter(Unit unit = null)
+    public virtual void Enter(Unit unit)
     {
         this.unit = unit;
     }

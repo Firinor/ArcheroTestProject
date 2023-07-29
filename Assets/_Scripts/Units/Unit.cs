@@ -1,18 +1,22 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField]
+    protected UnitBehaviorStateMachine behavior;
     protected UnitStats Stats;
 
-    protected UnitBehavior behavior;
-    public Vector2 MoveVector { get; protected set; }
-    public Transform target { get; protected set; }
+    public Vector2 MovePoint { get; protected set; }
     public NavMeshAgent NavMeshAgent { get; private set; }
 
-    private void Awake()
+    public virtual void Awake()
     {
         NavMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    public void SetBehavior(UnitBehavior newBehavior)
+    {
+        behavior.SetState(newBehavior, this);
     }
 }

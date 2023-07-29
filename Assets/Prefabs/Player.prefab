@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d737d76057d52394cadbef6d78cd5993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stats: {fileID: 11400000, guid: d49cfc58b9291cd4998222cb4376e0c5, type: 2}
+  startBehavior: {fileID: 11400000, guid: 4aa9ef503374f064192ac63522eeb454, type: 2}
+  stats: {fileID: 11400000, guid: d49cfc58b9291cd4998222cb4376e0c5, type: 2}
 --- !u!1001 &4243259166246889633
 PrefabInstance:
   m_ObjectHideFlags: 0
