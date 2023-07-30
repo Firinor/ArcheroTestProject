@@ -2,7 +2,7 @@
 
 namespace PlayerBehavior 
 {
-    [CreateAssetMenu(fileName = "PlayerMoveUnitBehavior", menuName = "UnitBehaviors/PlayerMoveUnitBehavior")]
+    [CreateAssetMenu(fileName = "PlayerMoveUnitBehavior", menuName = "GameScriptable/UnitBehaviors/PlayerMoveUnitBehavior")]
     public class Move : PlayerBehavior
     {
         [Header("Behavior transitions")]

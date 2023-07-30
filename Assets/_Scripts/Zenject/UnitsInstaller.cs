@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-[CreateAssetMenu(fileName = "UnitsInstaller", menuName = "Installers/UnitsInstaller")]
+[CreateAssetMenu(fileName = "UnitsInstaller", menuName = "GameScriptable/UnitsInstaller")]
 public class UnitsInstaller : ScriptableObjectInstaller<UnitsInstaller>
 {
     [SerializeField]

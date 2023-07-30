@@ -2,7 +2,7 @@
 
 namespace PlayerBehavior
 {
-    [CreateAssetMenu(fileName = "PlayerIdleUnitBehavior", menuName = "UnitBehaviors/PlayerIdleUnitBehavior")]
+    [CreateAssetMenu(fileName = "PlayerIdleUnitBehavior", menuName = "GameScriptable/UnitBehaviors/PlayerIdleUnitBehavior")]
     public class Idle : PlayerBehavior
     {
         [Header("Behavior transitions")]

@@ -2,7 +2,7 @@
 
 namespace EnemyBehavior
 {
-    [CreateAssetMenu(fileName = "EnemyMoveUnitBehavior", menuName = "UnitBehaviors/EnemyMoveUnitBehavior")]
+    [CreateAssetMenu(fileName = "EnemyMoveUnitBehavior", menuName = "GameScriptable/UnitBehaviors/EnemyMoveUnitBehavior")]
     public class Move : EnemyBehavior
     {
         public override void Update()
