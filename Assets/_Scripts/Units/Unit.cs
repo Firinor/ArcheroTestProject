@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
-using Zenject;
 
-public class Unit : MonoBehaviour
+public abstract class Unit : MonoBehaviour
 {
     protected UnitBehaviorStateMachine behavior;
     protected UnitStats Stats;

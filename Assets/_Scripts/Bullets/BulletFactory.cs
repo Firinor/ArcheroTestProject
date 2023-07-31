@@ -8,23 +8,16 @@ public class BulletFactory : MonoBehaviour
     [SerializeField]
     private Bullet prefab;
 
-    private Unit mimic;
-
-    public void Create(in Unit owner, int damage, Vector3 direction)
+    public void Create(BulletData data)
     {
-        Bullet result = bullets.Find(b => b.gameObject.activeSelf);
+        Bullet result = bullets.Find(b => !b.gameObject.activeSelf);
 
         if (result == null)
+        {
             result = Instantiate(prefab);
+            bullets.Add(result);
+        }
+            
 
-        mimic = owner;
-
-        mimic.name = null;
-
-        mimic.enabled = false;
-
-        mimic = null;
-
-        owner.name = "";
     }
 }
