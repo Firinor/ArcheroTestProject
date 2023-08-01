@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +7,7 @@ public abstract class Unit : MonoBehaviour
     protected UnitBehaviorStateMachine behavior;
     protected UnitStats Stats;
 
+    public Action OnDeath;
     public Vector2 MovePoint { get; protected set; }
     public NavMeshAgent NavMeshAgent { get; private set; }
 
@@ -17,5 +19,10 @@ public abstract class Unit : MonoBehaviour
     public void SetBehavior(UnitBehavior newBehavior)
     {
         behavior.SetState(newBehavior, this);
+    }
+
+    protected void Death()
+    {
+        OnDeath?.Invoke();
     }
 }

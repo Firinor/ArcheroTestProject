@@ -4,6 +4,9 @@ using Zenject;
 
 public class MainMonoInstaller : MonoInstaller
 {
+    [SerializeField]
+    private BulletFactory bulletFactory;
+
     public override void InstallBindings()
     {
         //Container.Bind<TimeData>().AsSingle();
@@ -21,6 +24,6 @@ public class MainMonoInstaller : MonoInstaller
         //Container.Bind<TimeState>().AsSingle();
         //Container.Bind<AlarmState>().AsSingle();
 
-        //Container.Bind<UnitBehaviorStateMachine>().AsTransient();
+        //Container.BindFactory<Bullet, BulletFactory>().FromInstance(bulletFactory);
     }
 }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerIdleUnitBehavior
   m_EditorClassIdentifier: 
   move: {fileID: 11400000, guid: ef47bd18b4563fa43b2321cb5725b8b0, type: 2}
+  attack: {fileID: 11400000, guid: 0c34ae3af26146d44a6f6c77ad35d967, type: 2}

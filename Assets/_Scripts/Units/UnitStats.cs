@@ -9,4 +9,6 @@ public class UnitStats : ScriptableObject
 
     public int Damage;
     public float AttackRate;
+
+    public string EnemyTag;
 }

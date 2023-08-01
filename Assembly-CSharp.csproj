@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Attack.cs" />
+    <Compile Include="Assets\_Scripts\Bullets\BulletData.cs" />
     <Compile Include="Assets\_Scripts\Zenject\UnitsInstaller.cs" />
     <Compile Include="Assets\_Scripts\Joystick\VisibleFloatingJoystick.cs" />
     <Compile Include="Assets\_Scripts\Camera\CameraSize.cs" />
@@ -77,7 +78,10 @@
     <Compile Include="Assets\_Scripts\GameConfiguration.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\UnitBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviour.cs" />
-    <Compile Include="Assets\_Scripts\Bullets\BulletData.cs" />
+    <Compile Include="Assets\_Scripts\Bullets\IShooter.cs" />
+    <Compile Include="Assets\_Scripts\Level.cs" />
+    <Compile Include="Assets\_Scripts\Units\PlayerHelper\Aim.cs" />
+    <Compile Include="Assets\_Scripts\Bullets\ShooterData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\OutlineEffectShader.shader" />

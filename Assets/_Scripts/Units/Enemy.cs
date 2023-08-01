@@ -1,4 +1,4 @@
-﻿class Enemy : Unit
+﻿public class Enemy : Unit
 {
 
 }

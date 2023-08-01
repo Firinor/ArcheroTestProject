@@ -12,7 +12,10 @@ namespace PlayerBehavior
         public override void Update()
         {
             if (!player.IsJoystickDirection())
+            {
                 player.SetBehavior(idle);
+                return;
+            }
 
             //Debug.Log(unit.moveVector);
             Vector3 unitPosition = player.transform.position;

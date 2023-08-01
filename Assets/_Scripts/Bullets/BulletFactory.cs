@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class BulletFactory : MonoBehaviour
 {
@@ -7,17 +8,21 @@ public class BulletFactory : MonoBehaviour
     private List<Bullet> bullets;
     [SerializeField]
     private Bullet prefab;
+    [Inject]
+    private GameConfiguration configuration;
 
-    public void Create(BulletData data)
+    public void Create(ShooterData data)
     {
+        BulletData bulletData = new BulletData(data, configuration.BulletSpeed, configuration.BulletLifeTime);
+
         Bullet result = bullets.Find(b => !b.gameObject.activeSelf);
 
         if (result == null)
         {
-            result = Instantiate(prefab);
+            result = Instantiate(prefab, transform);
             bullets.Add(result);
         }
-            
 
+        result.Init(bulletData);
     }
 }

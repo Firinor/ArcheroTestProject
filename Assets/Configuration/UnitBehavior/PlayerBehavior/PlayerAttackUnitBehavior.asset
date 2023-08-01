@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5a34e7d874488b44987d760ddda55df, type: 3}
-  m_Name: GameConfiguration
+  m_Script: {fileID: 11500000, guid: 5f746fe95b7e23044a2170dc7210f93c, type: 3}
+  m_Name: PlayerAttackUnitBehavior
   m_EditorClassIdentifier: 
-  BulletLifeTime: 5
-  BulletSpeed: 0.5
+  idle: {fileID: 11400000, guid: 4aa9ef503374f064192ac63522eeb454, type: 2}
+  move: {fileID: 11400000, guid: ef47bd18b4563fa43b2321cb5725b8b0, type: 2}

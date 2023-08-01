@@ -16,3 +16,4 @@ MonoBehaviour:
   Health: 1000
   Damage: 70
   AttackRate: 2
+  EnemyTag: Player
