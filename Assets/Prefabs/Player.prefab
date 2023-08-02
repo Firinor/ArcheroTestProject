@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startBehavior: {fileID: 11400000, guid: 4aa9ef503374f064192ac63522eeb454, type: 2}
+  aim: {fileID: 0}
   bulletSpawnPoint: {fileID: 6128536945965170263}
 --- !u!1 &5195096830447714483
 GameObject:

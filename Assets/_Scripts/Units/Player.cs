@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using UniRx;
 using UnityEngine;
@@ -19,6 +18,7 @@ public class Player : Unit, IShooter
     private Aim aim;
     [Inject(Id = "Player")]
     private UnitStats basisStats;
+    [SerializeField]
     private CurrentStats currentStats;
 
     [SerializeField]
@@ -80,11 +80,11 @@ public class Player : Unit, IShooter
             owner = this,
             damage = basisStats.Damage,
             spawnPosition = bulletSpawnPoint.position,
-            direction = GetDirectionToEnemy()
+            target = Target
         };
     }
 
-    private void FindEnemy()
+    public void FindEnemy()
     {
         Enemy[] enemies = GetSortedEnemies();
         for(int i = 0; i < enemies.Length; i++)
@@ -103,25 +103,38 @@ public class Player : Unit, IShooter
     }
     private Enemy[] GetSortedEnemies()
     {
-        Enemy[] sortedEnemies = level.Enemies.OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position)).ToArray();
-        return sortedEnemies;
+        //Enemy[] sortedEnemies = level.Enemies.OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position)).ToArray();
+        var sortedEnemies = from enemy in level.Enemies
+                                orderby Vector3.Distance(transform.position, enemy.transform.position)
+                                select enemy;
+        DebugDist();
+        return sortedEnemies.ToArray();
     }
+
+    private void DebugDist()
+    {
+        for(int i = 0; i < level.Enemies.Length; i++){
+            float dist = Vector3.Distance(transform.position, level.Enemies[i].transform.position);
+            Debug.Log($"Enemy {level.Enemies[i].name} on dist {dist}");
+        }
+    }
+
     private bool TargetIsInSight(Vector3 target)
     {
-        Ray ray = new Ray(transform.position, GetDirectionToEnemy());
+        Ray ray = new Ray(transform.position, DirectionTo(target));
 
-        if (!Physics.Raycast(ray, out RaycastHit hit))
+        if (!Physics.Raycast(ray, out RaycastHit hit, maxDistance: int.MaxValue, layerMask: LayerMask.GetMask(basisStats.EnemyLayer)))
             return false;
 
         if (hit.collider.tag == basisStats.EnemyTag)
             return true;
 
         return false;
-    }
 
-    private Vector3 GetDirectionToEnemy()
-    {
-        return Target - transform.position;
+        Vector3 DirectionTo(Vector3 target)
+        {
+            return target - transform.position;
+        }
     }
 
     internal void LookAtEnemy()

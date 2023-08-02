@@ -17,11 +17,15 @@ namespace PlayerBehavior
                 return;
             }
 
-            //Debug.Log(unit.moveVector);
             Vector3 unitPosition = player.transform.position;
             Vector3 unitDirection = new Vector3(player.MovePoint.x, 0, player.MovePoint.y);
 
             player.NavMeshAgent.SetDestination(unitPosition + unitDirection);
+        }
+
+        public override void Exit()
+        {
+            player.NavMeshAgent.SetDestination(player.transform.position);
         }
     }
 }

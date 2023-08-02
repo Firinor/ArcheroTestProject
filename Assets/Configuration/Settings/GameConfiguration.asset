@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GameConfiguration
   m_EditorClassIdentifier: 
   BulletLifeTime: 5
-  BulletSpeed: 0.5
+  BulletSpeed: 5

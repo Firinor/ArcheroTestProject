@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Zenject;
 
 namespace PlayerBehavior
 {
@@ -26,8 +25,8 @@ namespace PlayerBehavior
                 player.SetBehavior(idle);
                 return;
             }
-                
 
+            player.FindEnemy();
             player.LookAtEnemy();
             player.Attack();
         }

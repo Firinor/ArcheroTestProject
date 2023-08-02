@@ -5,7 +5,7 @@ public struct BulletData
     public IShooter owner;
     public int damage;
     public Vector3 spawnPosition;
-    public Vector3 direction;
+    public Vector3 target;
 
     public float speed;
     public float lifeTime;
@@ -15,7 +15,7 @@ public struct BulletData
         owner = shooterData.owner;
         damage = shooterData.damage;
         spawnPosition = shooterData.spawnPosition;
-        direction = shooterData.direction;
+        target = shooterData.target;
 
         this.speed = speed;
         this.lifeTime = lifeTime;

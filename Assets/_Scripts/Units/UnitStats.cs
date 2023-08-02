@@ -11,4 +11,5 @@ public class UnitStats : ScriptableObject
     public float AttackRate;
 
     public string EnemyTag;
+    public string EnemyLayer;
 }

@@ -17,15 +17,15 @@ public class Bullet : MonoBehaviour
         lifeTime = data.lifeTime;
         transform.position = data.spawnPosition;
         speed = data.speed;
-        direction = data.direction;
-        transform.eulerAngles = direction;
+        transform.LookAt(data.target);
+        direction = (data.target - data.spawnPosition).normalized;
 
         gameObject.SetActive(true);
     }
 
     public void Update()
     {
-        transform.position += direction.normalized * speed * Time.deltaTime;
+        transform.localPosition += direction * speed * Time.deltaTime;
     }
 
     public void FixedUpdate()

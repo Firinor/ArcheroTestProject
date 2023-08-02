@@ -57,19 +57,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Attack.cs" />
+    <Compile Include="Assets\_Scripts\Level.cs" />
     <Compile Include="Assets\_Scripts\Bullets\BulletData.cs" />
     <Compile Include="Assets\_Scripts\Zenject\UnitsInstaller.cs" />
+    <Compile Include="Assets\_Scripts\Bullets\ShooterData.cs" />
     <Compile Include="Assets\_Scripts\Joystick\VisibleFloatingJoystick.cs" />
     <Compile Include="Assets\_Scripts\Camera\CameraSize.cs" />
     <Compile Include="Assets\_Scripts\Zenject\ScriptableObjectInstaller.cs" />
     <Compile Include="Assets\_Scripts\Units\Unit.cs" />
     <Compile Include="Assets\_Scripts\Units\UnitStats.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Move.cs" />
+    <Compile Include="Assets\_Scripts\Units\PlayerHelper\Aim.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\EnemyBehaviour.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Overwatch.cs" />
     <Compile Include="Assets\_Scripts\Zenject\MainMonoInstaller.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Move.cs" />
     <Compile Include="Assets\_Scripts\Units\Player.cs" />
+    <Compile Include="Assets\_Scripts\Bullets\IShooter.cs" />
     <Compile Include="Assets\_Scripts\Bullets\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Bullets\BulletFactory.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Idle.cs" />
@@ -78,10 +82,6 @@
     <Compile Include="Assets\_Scripts\GameConfiguration.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\UnitBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviour.cs" />
-    <Compile Include="Assets\_Scripts\Bullets\IShooter.cs" />
-    <Compile Include="Assets\_Scripts\Level.cs" />
-    <Compile Include="Assets\_Scripts\Units\PlayerHelper\Aim.cs" />
-    <Compile Include="Assets\_Scripts\Bullets\ShooterData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\OutlineEffectShader.shader" />
