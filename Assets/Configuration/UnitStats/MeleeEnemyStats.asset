@@ -17,4 +17,4 @@ MonoBehaviour:
   Damage: 70
   AttackRate: 2
   EnemyTag: Player
-  EnemyLayerMask: 8
+  EnemyLayer: Player

@@ -1,5 +1,6 @@
 using UnityEngine;
-using Zenject;
+using System.Linq;
+using System;
 
 public class Bullet : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Bullet : MonoBehaviour
     private float lifeTime;
     private float speed;
     private Vector3 direction;
+    private string[] tagMask;
 
 
     public void Init(BulletData data)
@@ -19,6 +21,8 @@ public class Bullet : MonoBehaviour
         speed = data.speed;
         transform.LookAt(data.target);
         direction = (data.target - data.spawnPosition).normalized;
+
+        tagMask = data.tagMask;
 
         gameObject.SetActive(true);
     }
@@ -34,6 +38,20 @@ public class Bullet : MonoBehaviour
         if (lifeTime <= 0)
             Disable();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        string tag = other.gameObject.tag;
+        if (!Array.Exists(tagMask, mask => mask == tag))
+            return;
+
+        if (other.gameObject.TryGetComponent(out Unit unit))
+            unit.Damage(damage);
+
+        Disable();
+    }
+
+
 
     private void Disable()
     {

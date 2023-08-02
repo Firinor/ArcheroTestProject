@@ -6,4 +6,5 @@ public struct ShooterData
     public int damage;
     public Vector3 spawnPosition;
     public Vector3 target;
+    public string[] tagMask;
 }

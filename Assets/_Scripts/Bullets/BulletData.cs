@@ -9,6 +9,7 @@ public struct BulletData
 
     public float speed;
     public float lifeTime;
+    public string[] tagMask;
 
     public BulletData(ShooterData shooterData, float speed, float lifeTime)
     {
@@ -16,6 +17,7 @@ public struct BulletData
         damage = shooterData.damage;
         spawnPosition = shooterData.spawnPosition;
         target = shooterData.target;
+        tagMask = shooterData.tagMask;
 
         this.speed = speed;
         this.lifeTime = lifeTime;

@@ -21,8 +21,14 @@ public abstract class Unit : MonoBehaviour
         behavior.SetState(newBehavior, this);
     }
 
-    protected void Death()
+    protected virtual void Death()
     {
         OnDeath?.Invoke();
+        Destroy(gameObject);
+    }
+
+    public virtual void Damage(float damage)
+    {
+        
     }
 }

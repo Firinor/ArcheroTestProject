@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Level : MonoBehaviour
@@ -15,12 +14,7 @@ public class Level : MonoBehaviour
 
     private void SubscribeToPlayer()
     {
-        Player.OnDeath += ShowFailGUI;
-    }
-
-    private void ShowFailGUI()
-    {
-        throw new NotImplementedException();
+        Player.OnDeath += GameOver;
     }
 
     private void SubscribeToEnemy()
@@ -36,5 +30,8 @@ public class Level : MonoBehaviour
 
     public int EnemiesCount { get; internal set; }
 
-
+    private void GameOver()
+    {
+        Debug.LogError("Game Over!");
+    }
 }

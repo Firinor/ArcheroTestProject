@@ -35,11 +35,6 @@ public class Player : Unit, IShooter
         } 
     }
 
-    public bool IsAnyEnemy()
-    {
-        return level.EnemiesCount > 0;
-    }
-
     private CompositeDisposable disposables = new CompositeDisposable();
 
     public override void Awake()
@@ -51,6 +46,7 @@ public class Player : Unit, IShooter
             Helth = basisStats.Health,
             Cooldown = 0
         };
+        NavMeshAgent.speed = basisStats.Speed;
         FindEnemy();
 
         Observable.EveryFixedUpdate()
@@ -58,15 +54,23 @@ public class Player : Unit, IShooter
             .Subscribe(_ => Cooldown())
             .AddTo(disposables);
     }
+    private void FixedUpdate()
+    {
+        MovePoint = joystick.Direction;
+        behavior.Update();
+    }
 
+    public bool IsAnyEnemy()
+    {
+        return level.EnemiesCount > 0;
+    }
     private void Cooldown()
     {
         currentStats.Cooldown -= Time.fixedDeltaTime;
     }
-
     public void Attack()
     {
-        if (currentStats.Cooldown <= 0)
+        if (currentStats.Cooldown <= 0 && TargetIsInSight(Target))
         {
             currentStats.Cooldown += basisStats.AttackRate;
             bulletFactory.Create(GenerateShooterData());
@@ -80,7 +84,8 @@ public class Player : Unit, IShooter
             owner = this,
             damage = basisStats.Damage,
             spawnPosition = bulletSpawnPoint.position,
-            target = Target
+            target = Target,
+            tagMask = new string[]{ "Enemy", "Ground" }
         };
     }
 
@@ -103,27 +108,20 @@ public class Player : Unit, IShooter
     }
     private Enemy[] GetSortedEnemies()
     {
-        //Enemy[] sortedEnemies = level.Enemies.OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position)).ToArray();
-        var sortedEnemies = from enemy in level.Enemies
-                                orderby Vector3.Distance(transform.position, enemy.transform.position)
-                                select enemy;
-        DebugDist();
-        return sortedEnemies.ToArray();
+        Enemy[] sortedEnemies = level.Enemies.OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position)).ToArray();
+        //var sortedEnemies = from enemy in level.Enemies
+        //                        orderby Vector3.Distance(transform.position, enemy.transform.position)
+        //                        select enemy;
+        return sortedEnemies;
     }
-
-    private void DebugDist()
-    {
-        for(int i = 0; i < level.Enemies.Length; i++){
-            float dist = Vector3.Distance(transform.position, level.Enemies[i].transform.position);
-            Debug.Log($"Enemy {level.Enemies[i].name} on dist {dist}");
-        }
-    }
-
     private bool TargetIsInSight(Vector3 target)
     {
-        Ray ray = new Ray(transform.position, DirectionTo(target));
+        Ray ray = new Ray(bulletSpawnPoint.position, DirectionTo(target));
 
-        if (!Physics.Raycast(ray, out RaycastHit hit, maxDistance: int.MaxValue, layerMask: LayerMask.GetMask(basisStats.EnemyLayer)))
+        LayerMask mask = new LayerMask();
+        mask.value = LayerMask.GetMask(basisStats.EnemyLayer) + LayerMask.GetMask("Ground");
+
+        if (!Physics.Raycast(ray, out RaycastHit hit, maxDistance: int.MaxValue, layerMask: mask))
             return false;
 
         if (hit.collider.tag == basisStats.EnemyTag)
@@ -133,24 +131,25 @@ public class Player : Unit, IShooter
 
         Vector3 DirectionTo(Vector3 target)
         {
-            return target - transform.position;
+            return target - bulletSpawnPoint.position;
         }
     }
-
-    internal void LookAtEnemy()
-    {
+    public void LookAtEnemy()
+    {   
         transform.LookAt(Target);
-    }
-
-    private void FixedUpdate()
-    {
-        MovePoint = joystick.Direction;
-        behavior.Update();
     }
 
     public bool IsJoystickDirection()
     {
         return joystick.Direction.x != 0 || joystick.Direction.y != 0;
+    }
+
+    public override void Damage(float damage)
+    {
+        currentStats.Helth -= (int)damage;
+        if (currentStats.Helth <= 0)
+            Death();
+
     }
 
     private class CurrentStats
