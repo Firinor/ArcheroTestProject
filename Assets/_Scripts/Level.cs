@@ -1,13 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Level : MonoBehaviour
 {
     public Player Player;
-    public Enemy[] Enemies;
+    public List<Enemy> Enemies;
 
     private void Awake()
     {
-        EnemiesCount = Enemies.Length;
         SubscribeToPlayer();
         SubscribeToEnemy();
     }
@@ -23,14 +23,14 @@ public class Level : MonoBehaviour
             enemy.OnDeath += EnemyDeath;
     }
 
-    private void EnemyDeath()
+    private void EnemyDeath(Unit dyingEnemy)
     {
-        EnemiesCount--;
+        if(dyingEnemy is Enemy enemy)
+            Enemies.Remove(enemy);
     }
 
-    public int EnemiesCount { get; internal set; }
 
-    private void GameOver()
+    private void GameOver(Unit dyungPlayer)
     {
         Debug.LogError("Game Over!");
     }

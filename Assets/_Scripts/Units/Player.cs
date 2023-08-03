@@ -62,7 +62,7 @@ public class Player : Unit, IShooter
 
     public bool IsAnyEnemy()
     {
-        return level.EnemiesCount > 0;
+        return level.Enemies.Count > 0;
     }
     private void Cooldown()
     {

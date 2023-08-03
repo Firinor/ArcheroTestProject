@@ -82,6 +82,7 @@
     <Compile Include="Assets\_Scripts\GameConfiguration.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\UnitBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviour.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\EnemyBehaviourStateMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\OutlineEffectShader.shader" />

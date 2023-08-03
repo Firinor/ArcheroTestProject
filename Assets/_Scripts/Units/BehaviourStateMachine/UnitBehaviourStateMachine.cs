@@ -2,20 +2,20 @@ public class UnitBehaviorStateMachine
 { 
     public UnitBehavior currentBehavior { get; private set; }
 
-    public UnitBehaviorStateMachine(UnitBehavior startBehavior, Unit unit)
+    public UnitBehaviorStateMachine(UnitBehavior startBehavior)
     {
         currentBehavior = startBehavior;
-        currentBehavior.Enter(unit);
+        currentBehavior.Enter();
     }
 
-    public void SetState(UnitBehavior newBehavior, Unit unit)
+    public virtual void SetState(UnitBehavior newBehavior)
     {
         currentBehavior.Exit();
         currentBehavior = newBehavior;
-        currentBehavior.Enter(unit);
+        currentBehavior.Enter();
     }
 
-    public void Update()
+    public virtual void Update()
     {
         currentBehavior.Update();
     }

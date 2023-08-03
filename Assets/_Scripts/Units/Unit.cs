@@ -7,7 +7,7 @@ public abstract class Unit : MonoBehaviour
     protected UnitBehaviorStateMachine behavior;
     protected UnitStats Stats;
 
-    public Action OnDeath;
+    public Action<Unit> OnDeath;
     public Vector2 MovePoint { get; protected set; }
     public NavMeshAgent NavMeshAgent { get; private set; }
 
@@ -18,12 +18,13 @@ public abstract class Unit : MonoBehaviour
 
     public void SetBehavior(UnitBehavior newBehavior)
     {
-        behavior.SetState(newBehavior, this);
+        behavior.SetState(newBehavior);
     }
 
     protected virtual void Death()
     {
-        OnDeath?.Invoke();
+        OnDeath?.Invoke(this);
+        this.NavMeshAgent.enabled = false;
         Destroy(gameObject);
     }
 

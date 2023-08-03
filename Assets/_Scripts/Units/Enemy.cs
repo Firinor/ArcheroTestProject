@@ -1,4 +1,4 @@
-﻿using System;
+﻿using EnemyBehaviorNamespace;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -10,7 +10,7 @@ public class Enemy : Unit
     private Player player;
 
     [SerializeField]
-    private UnitBehavior startBehavior;
+    private EnemyBehavior startBehavior;
     [Inject(Id = "MeleeEnemy")]
     private UnitStats basisStats;
     [SerializeField]
@@ -20,10 +20,12 @@ public class Enemy : Unit
 
     public Vector3 Target => player.transform.position;
 
+    public bool IsAlive => currentStats.Helth <= 0;
+
     public override void Awake()
     {
         base.Awake();
-        behavior = new UnitBehaviorStateMachine(startBehavior, this);
+        behavior = new EnemyBehaviourStateMachine(startBehavior, this);
         currentStats = new CurrentStats()
         {
             Helth = basisStats.Health,
@@ -74,6 +76,12 @@ public class Enemy : Unit
         currentStats.Helth -= (int)damage;
         if (currentStats.Helth <= 0)
             Death();
+    }
+
+    protected override void Death()
+    {
+
+        base.Death();
     }
 
     private class CurrentStats
