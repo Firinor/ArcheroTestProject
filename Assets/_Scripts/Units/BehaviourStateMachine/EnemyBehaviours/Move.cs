@@ -5,9 +5,9 @@ namespace EnemyBehaviorNamespace
     [CreateAssetMenu(fileName = "EnemyMoveUnitBehavior", menuName = "GameScriptable/UnitBehaviors/EnemyMoveUnitBehavior")]
     public class Move : EnemyBehavior
     {
-        public override void Update()
+        public override void Tick(Enemy enemy)
         {
-            //enemy.NavMeshAgent.SetDestination(enemy.Target);
+            enemy.NavMeshAgent.SetDestination(enemy.Target);
         }
     }
 }

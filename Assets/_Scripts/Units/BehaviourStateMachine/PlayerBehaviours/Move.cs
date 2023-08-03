@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PlayerBehavior 
+namespace PlayerBehaviourNamespace
 {
     [CreateAssetMenu(fileName = "PlayerMoveUnitBehavior", menuName = "GameScriptable/UnitBehaviors/PlayerMoveUnitBehavior")]
     public class Move : PlayerBehavior
@@ -9,7 +9,7 @@ namespace PlayerBehavior
         [SerializeField]
         private PlayerBehavior idle;
 
-        public override void Update()
+        public override void Tick(Player player)
         {
             if (!player.IsJoystickDirection())
             {
@@ -23,7 +23,7 @@ namespace PlayerBehavior
             player.NavMeshAgent.SetDestination(unitPosition + unitDirection);
         }
 
-        public override void Exit()
+        public override void Exit(Player player)
         {
             player.NavMeshAgent.SetDestination(player.transform.position);
         }

@@ -15,8 +15,8 @@ public class UnitBehaviorStateMachine
         currentBehavior.Enter();
     }
 
-    public virtual void Update()
+    public virtual void Tick()
     {
-        currentBehavior.Update();
+        currentBehavior.Tick();
     }
 }

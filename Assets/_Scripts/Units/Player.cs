@@ -2,6 +2,7 @@ using System.Linq;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using PlayerBehaviourNamespace;
 
 public class Player : Unit, IShooter
 {
@@ -13,7 +14,7 @@ public class Player : Unit, IShooter
     private Level level;
 
     [SerializeField]
-    private UnitBehavior startBehavior;
+    private PlayerBehavior startBehavior;
     [SerializeField]
     private Aim aim;
     [Inject(Id = "Player")]
@@ -40,7 +41,7 @@ public class Player : Unit, IShooter
     public override void Awake()
     {
         base.Awake();
-        behavior = new UnitBehaviorStateMachine(startBehavior, this);
+        behavior = new PlayerBehaviourStateMachine(startBehavior, this);
         currentStats = new CurrentStats()
         {
             Helth = basisStats.Health,
@@ -57,7 +58,12 @@ public class Player : Unit, IShooter
     private void FixedUpdate()
     {
         MovePoint = joystick.Direction;
-        behavior.Update();
+        behavior.Tick();
+    }
+
+    public void SetBehavior(PlayerBehavior newBehavior)
+    {
+        (behavior as PlayerBehaviourStateMachine).SetState(newBehavior);
     }
 
     public bool IsAnyEnemy()

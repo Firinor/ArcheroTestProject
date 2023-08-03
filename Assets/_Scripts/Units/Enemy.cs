@@ -44,7 +44,7 @@ public class Enemy : Unit
 
     private void FixedUpdate()
     {
-        behavior.Update();
+        behavior.Tick();
     }
 
     private void FindEnemy()

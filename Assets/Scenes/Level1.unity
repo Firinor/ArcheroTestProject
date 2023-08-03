@@ -1491,8 +1491,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 185427015}
   Enemies:
-  - {fileID: 1290519408}
   - {fileID: 1280343714}
+  - {fileID: 1290519408}
 --- !u!114 &919132149582125227
 MonoBehaviour:
   m_ObjectHideFlags: 0

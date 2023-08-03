@@ -16,7 +16,7 @@ public abstract class Unit : MonoBehaviour
         NavMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    public void SetBehavior(UnitBehavior newBehavior)
+    public virtual void SetBehavior(UnitBehavior newBehavior)
     {
         behavior.SetState(newBehavior);
     }
@@ -24,7 +24,7 @@ public abstract class Unit : MonoBehaviour
     protected virtual void Death()
     {
         OnDeath?.Invoke(this);
-        this.NavMeshAgent.enabled = false;
+        NavMeshAgent.enabled = false;
         Destroy(gameObject);
     }
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace PlayerBehavior
+namespace PlayerBehaviourNamespace
 {
     [CreateAssetMenu(fileName = "PlayerIdleUnitBehavior", menuName = "GameScriptable/UnitBehaviors/PlayerIdleUnitBehavior")]
     public class Idle : PlayerBehavior
@@ -12,7 +12,7 @@ namespace PlayerBehavior
         [SerializeField]
         private PlayerBehavior attack;
 
-        public override void Update()
+        public override void Tick(Player player)
         {
             if (player.IsJoystickDirection())
             {

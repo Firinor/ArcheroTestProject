@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PlayerBehavior
+namespace PlayerBehaviourNamespace
 {
     [CreateAssetMenu(fileName = "AttackUnitBehavior", menuName = "GameScriptable/UnitBehaviors/AttackUnitBehavior")]
     public class Attack : PlayerBehavior
@@ -11,7 +11,7 @@ namespace PlayerBehavior
         [SerializeField]
         private PlayerBehavior move;
 
-        public override void Update()
+        public override void Tick(Player player)
         {
             if (player.IsJoystickDirection())
             {

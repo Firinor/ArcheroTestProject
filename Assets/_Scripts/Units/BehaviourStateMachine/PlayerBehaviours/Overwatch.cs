@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-namespace PlayerBehavior
+namespace PlayerBehaviourNamespace
 {
     [CreateAssetMenu(fileName = "OverwatchUnitBehavior", menuName = "GameScriptable/UnitBehaviors/OverwatchUnitBehavior")]
     public class Overwatch : UnitBehavior
     {
-        public override void Update()
+        public override void Tick()
         {
 
         }
