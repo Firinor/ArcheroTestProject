@@ -13,6 +13,8 @@ public class Enemy : Unit
     private EnemyBehavior startBehavior;
     [Inject(Id = "MeleeEnemy")]
     private UnitStats basisStats;
+    private EnemyBehaviourStateMachine behavior;
+
     [SerializeField]
     private CurrentStats currentStats;
 
@@ -45,6 +47,11 @@ public class Enemy : Unit
     private void FixedUpdate()
     {
         behavior.Tick();
+    }
+
+    public void SetBehavior(EnemyBehavior newBehavior)
+    {
+        behavior.SetState(newBehavior);
     }
 
     private void FindEnemy()

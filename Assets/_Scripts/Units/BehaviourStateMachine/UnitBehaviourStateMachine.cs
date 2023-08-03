@@ -1,22 +1,24 @@
-public class UnitBehaviorStateMachine
+public abstract class UnitBehaviorStateMachine<TBehaviour, TUnit> where TBehaviour : UnitBehaviour where TUnit : Unit
 { 
-    public UnitBehavior currentBehavior { get; private set; }
+    public TBehaviour currentBehaviour { get; protected set; }
+    protected TUnit unit;
 
-    public UnitBehaviorStateMachine(UnitBehavior startBehavior)
+    public UnitBehaviorStateMachine(TBehaviour startBehavior, TUnit unit)
     {
-        currentBehavior = startBehavior;
-        currentBehavior.Enter();
+        currentBehaviour = startBehavior;
+        this.unit = unit;
+        currentBehaviour.Enter(unit);
     }
 
-    public virtual void SetState(UnitBehavior newBehavior)
+    public virtual void SetState(TBehaviour newBehavior)
     {
-        currentBehavior.Exit();
-        currentBehavior = newBehavior;
-        currentBehavior.Enter();
+        currentBehaviour.Exit(unit);
+        currentBehaviour = newBehavior;
+        currentBehaviour.Enter(unit);
     }
 
     public virtual void Tick()
     {
-        currentBehavior.Tick();
+        currentBehaviour.Tick(unit);
     }
 }

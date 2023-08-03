@@ -1,15 +1,16 @@
 ﻿
 namespace EnemyBehaviorNamespace
 {
-    public class EnemyBehaviourStateMachine : UnitBehaviorStateMachine
+    public class EnemyBehaviourStateMachine : UnitBehaviorStateMachine<EnemyBehavior, Enemy>
     {
-        public EnemyBehavior currentEnemyBehavior { get; private set; }
-        protected Enemy enemy;
-
-        public EnemyBehaviourStateMachine(EnemyBehavior startBehavior, Enemy enemy) : base(startBehavior)
+        //public EnemyBehaviourStateMachine(EnemyBehavior startBehavior, Enemy enemy) : base(startBehavior, )
+        //{
+        //    currentBehaviour = startBehavior;
+        //    unit = enemy;
+        //    currentBehaviour.Enter(enemy);
+        //}
+        public EnemyBehaviourStateMachine(EnemyBehavior startBehavior, Enemy unit) : base(startBehavior, unit)
         {
-            currentEnemyBehavior = startBehavior;
-            this.enemy = enemy;
         }
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public abstract class Unit : MonoBehaviour
 {
-    protected UnitBehaviorStateMachine behavior;
     protected UnitStats Stats;
 
     public Action<Unit> OnDeath;
@@ -16,9 +15,8 @@ public abstract class Unit : MonoBehaviour
         NavMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    public virtual void SetBehavior(UnitBehavior newBehavior)
+    public virtual void SetBehavior<TBehaviour>(TBehaviour newBehavior) where TBehaviour : UnitBehaviour
     {
-        behavior.SetState(newBehavior);
     }
 
     protected virtual void Death()

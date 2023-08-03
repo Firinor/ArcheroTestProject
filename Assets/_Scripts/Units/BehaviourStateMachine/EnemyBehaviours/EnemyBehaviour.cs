@@ -2,7 +2,7 @@
 
 namespace EnemyBehaviorNamespace
 {
-    public abstract class EnemyBehavior : UnitBehavior
+    public abstract class EnemyBehavior : UnitBehaviour
     {
         public virtual void Enter(Enemy enemy) { }
         public virtual void Tick(Enemy enemy) { }

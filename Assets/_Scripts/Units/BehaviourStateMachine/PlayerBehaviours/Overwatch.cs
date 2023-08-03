@@ -3,11 +3,11 @@
 namespace PlayerBehaviourNamespace
 {
     [CreateAssetMenu(fileName = "OverwatchUnitBehavior", menuName = "GameScriptable/UnitBehaviors/OverwatchUnitBehavior")]
-    public class Overwatch : UnitBehavior
+    public class Overwatch : UnitBehaviour
     {
-        public override void Tick()
-        {
+        //public override void Tick(Player player)
+        //{
 
-        }
+        //}
     }
 }

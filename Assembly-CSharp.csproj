@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Attack.cs" />
     <Compile Include="Assets\_Scripts\Level.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Bullets\BulletData.cs" />
     <Compile Include="Assets\_Scripts\Zenject\UnitsInstaller.cs" />
     <Compile Include="Assets\_Scripts\Bullets\ShooterData.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\_Scripts\Units\Player.cs" />
     <Compile Include="Assets\_Scripts\Bullets\IShooter.cs" />
     <Compile Include="Assets\_Scripts\Bullets\Bullet.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\EnemyBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Bullets\BulletFactory.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Idle.cs" />
     <Compile Include="Assets\_Scripts\Units\Enemy.cs" />
@@ -82,8 +84,6 @@
     <Compile Include="Assets\_Scripts\GameConfiguration.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\UnitBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviour.cs" />
-    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\EnemyBehaviourStateMachine.cs" />
-    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviourStateMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\OutlineEffectShader.shader" />

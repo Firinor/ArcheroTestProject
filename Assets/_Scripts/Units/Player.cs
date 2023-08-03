@@ -19,6 +19,7 @@ public class Player : Unit, IShooter
     private Aim aim;
     [Inject(Id = "Player")]
     private UnitStats basisStats;
+    private PlayerBehaviourStateMachine behavior;
     [SerializeField]
     private CurrentStats currentStats;
 
@@ -63,7 +64,7 @@ public class Player : Unit, IShooter
 
     public void SetBehavior(PlayerBehavior newBehavior)
     {
-        (behavior as PlayerBehaviourStateMachine).SetState(newBehavior);
+        behavior.SetState(newBehavior);
     }
 
     public bool IsAnyEnemy()

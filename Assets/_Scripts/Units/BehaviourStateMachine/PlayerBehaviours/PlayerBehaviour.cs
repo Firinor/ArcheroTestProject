@@ -2,7 +2,7 @@
 
 namespace PlayerBehaviourNamespace
 {
-    public abstract class PlayerBehavior : UnitBehavior
+    public abstract class PlayerBehavior : UnitBehaviour
     {
         public virtual void Enter(Player player) { }
         public virtual void Tick(Player player) { }
