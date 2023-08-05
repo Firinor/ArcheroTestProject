@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1455888559806772952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7340316053167786738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d737d76057d52394cadbef6d78cd5993, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startBehavior: {fileID: 11400000, guid: 4aa9ef503374f064192ac63522eeb454, type: 2}
-  aim: {fileID: 0}
-  bulletSpawnPoint: {fileID: 6128536945965170263}
 --- !u!1 &5195096830447714483
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +30,22 @@ Transform:
   m_Father: {fileID: 7340316053167786742}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1455888559806772952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7340316053167786738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d737d76057d52394cadbef6d78cd5993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startBehavior: {fileID: 11400000, guid: 4aa9ef503374f064192ac63522eeb454, type: 2}
+  aim: {fileID: 0}
+  basisStats: {fileID: 11400000, guid: d49cfc58b9291cd4998222cb4376e0c5, type: 2}
+  bulletSpawnPoint: {fileID: 6128536945965170263}
 --- !u!1001 &4243259166246889633
 PrefabInstance:
   m_ObjectHideFlags: 0

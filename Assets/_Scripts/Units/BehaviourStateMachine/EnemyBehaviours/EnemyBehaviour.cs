@@ -2,10 +2,10 @@
 
 namespace EnemyBehaviorNamespace
 {
-    public abstract class EnemyBehavior : UnitBehaviour
+    public abstract class EnemyBehavior : UnitBehaviour<Enemy>
     {
-        public virtual void Enter(Enemy enemy) { }
-        public virtual void Tick(Enemy enemy) { }
-        public virtual void Exit(Enemy enemy) { }
+        public override void Enter(Enemy enemy) { }
+        public override void Tick(Enemy enemy) { }
+        public override void Exit(Enemy enemy) { }
     }
 }

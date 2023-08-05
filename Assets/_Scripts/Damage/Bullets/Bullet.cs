@@ -4,7 +4,7 @@ using System;
 
 public class Bullet : MonoBehaviour
 {
-    public IShooter Owner { get; private set; }
+    public Unit Owner { get; private set; }
     public float damage { get; private set; }
     private float lifeTime;
     private float speed;
@@ -14,15 +14,15 @@ public class Bullet : MonoBehaviour
 
     public void Init(BulletData data)
     {
-        Owner = data.owner;
-        damage = data.damage;
+        //Owner = data.owner;
+        //damage = data.damage;
         lifeTime = data.lifeTime;
-        transform.position = data.spawnPosition;
+        //transform.position = data.spawnPosition;
         speed = data.speed;
-        transform.LookAt(data.target);
-        direction = (data.target - data.spawnPosition).normalized;
+        //transform.LookAt(data.target);
+        //direction = (data.target - data.spawnPosition).normalized;
 
-        tagMask = data.tagMask;
+        //tagMask = data.tagMask;
 
         gameObject.SetActive(true);
     }

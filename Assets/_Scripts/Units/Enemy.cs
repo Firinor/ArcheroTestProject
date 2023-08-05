@@ -11,7 +11,7 @@ public class Enemy : Unit
 
     [SerializeField]
     private EnemyBehavior startBehavior;
-    [Inject(Id = "MeleeEnemy")]
+    [SerializeField]
     private UnitStats basisStats;
     private EnemyBehaviourStateMachine behavior;
 
@@ -66,10 +66,10 @@ public class Enemy : Unit
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out Player player))
-            player.Attack();
+            Attack(player);
     }
 
-    public void Attack()
+    public void Attack(Player player)
     {
         if (currentStats.Cooldown <= 0)
         {

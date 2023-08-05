@@ -15,9 +15,9 @@ public abstract class Unit : MonoBehaviour
         NavMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    public virtual void SetBehavior<TBehaviour>(TBehaviour newBehavior) where TBehaviour : UnitBehaviour
-    {
-    }
+    //public virtual void SetBehavior<TBehaviour>(TBehaviour newBehavior) where TBehaviour : UnitBehaviour
+    //{
+    //}
 
     protected virtual void Death()
     {

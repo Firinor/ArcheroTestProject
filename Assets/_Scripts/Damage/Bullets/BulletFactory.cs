@@ -11,9 +11,9 @@ public class BulletFactory : MonoBehaviour
     [Inject]
     private GameConfiguration configuration;
 
-    public void Create(ShooterData data)
+    public void Create()
     {
-        BulletData bulletData = new BulletData(data, configuration.BulletSpeed, configuration.BulletLifeTime);
+        BulletData bulletData = new BulletData(configuration.BulletSpeed, configuration.BulletLifeTime);
 
         Bullet result = bullets.Find(b => !b.gameObject.activeSelf);
 

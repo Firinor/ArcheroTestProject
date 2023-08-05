@@ -4,7 +4,7 @@ using UnityEngine;
 using Zenject;
 using PlayerBehaviourNamespace;
 
-public class Player : Unit, IShooter
+public class Player : Unit
 {
     [Inject]
     private VisibleFloatingJoystick joystick;
@@ -17,7 +17,7 @@ public class Player : Unit, IShooter
     private PlayerBehavior startBehavior;
     [SerializeField]
     private Aim aim;
-    [Inject(Id = "Player")]
+    [SerializeField]
     private UnitStats basisStats;
     private PlayerBehaviourStateMachine behavior;
     [SerializeField]
@@ -80,21 +80,21 @@ public class Player : Unit, IShooter
         if (currentStats.Cooldown <= 0 && TargetIsInSight(Target))
         {
             currentStats.Cooldown += basisStats.AttackRate;
-            bulletFactory.Create(GenerateShooterData());
+            bulletFactory.Create();
         }
     }
 
-    private ShooterData GenerateShooterData()
-    {
-        return new ShooterData()
-        {
-            owner = this,
-            damage = basisStats.Damage,
-            spawnPosition = bulletSpawnPoint.position,
-            target = Target,
-            tagMask = new string[]{ "Enemy", "Ground" }
-        };
-    }
+    //private ShooterData GenerateShooterData()
+    //{
+    //    return new ShooterData()
+    //    {
+    //        owner = this,
+    //        damage = basisStats.Damage,
+    //        spawnPosition = bulletSpawnPoint.position,
+    //        target = Target,
+    //        tagMask = new string[]{ "Enemy", "Ground" }
+    //    };
+    //}
 
     public void FindEnemy()
     {
@@ -153,6 +153,7 @@ public class Player : Unit, IShooter
 
     public override void Damage(float damage)
     {
+        Debug.Log($"Damage {(int)damage}!");
         currentStats.Helth -= (int)damage;
         if (currentStats.Helth <= 0)
             Death();

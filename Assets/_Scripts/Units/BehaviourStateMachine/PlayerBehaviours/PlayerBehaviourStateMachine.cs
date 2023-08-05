@@ -4,7 +4,6 @@
     {
         public PlayerBehaviourStateMachine(PlayerBehavior startBehavior, Player player) : base(startBehavior, player)
         {
-
         }
     }
 }

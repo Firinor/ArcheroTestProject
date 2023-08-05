@@ -1,4 +1,4 @@
-public abstract class UnitBehaviorStateMachine<TBehaviour, TUnit> where TBehaviour : UnitBehaviour where TUnit : Unit
+public abstract class UnitBehaviorStateMachine<TBehaviour, TUnit> where TBehaviour : UnitBehaviour<TUnit> where TUnit : Unit
 { 
     public TBehaviour currentBehaviour { get; protected set; }
     protected TUnit unit;

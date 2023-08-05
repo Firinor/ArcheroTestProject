@@ -2,10 +2,10 @@
 
 namespace PlayerBehaviourNamespace
 {
-    public abstract class PlayerBehavior : UnitBehaviour
+    public abstract class PlayerBehavior : UnitBehaviour<Player>
     {
-        public virtual void Enter(Player player) { }
-        public virtual void Tick(Player player) { }
-        public virtual void Exit(Player player) { }
+        public override void Enter(Player player) { }
+        public override void Tick(Player player) { }
+        public override void Exit(Player player) { }
     }
 }

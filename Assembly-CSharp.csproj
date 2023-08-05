@@ -59,9 +59,8 @@
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Attack.cs" />
     <Compile Include="Assets\_Scripts\Level.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviourStateMachine.cs" />
-    <Compile Include="Assets\_Scripts\Bullets\BulletData.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Bullets\BulletData.cs" />
     <Compile Include="Assets\_Scripts\Zenject\UnitsInstaller.cs" />
-    <Compile Include="Assets\_Scripts\Bullets\ShooterData.cs" />
     <Compile Include="Assets\_Scripts\Joystick\VisibleFloatingJoystick.cs" />
     <Compile Include="Assets\_Scripts\Camera\CameraSize.cs" />
     <Compile Include="Assets\_Scripts\Zenject\ScriptableObjectInstaller.cs" />
@@ -74,16 +73,18 @@
     <Compile Include="Assets\_Scripts\Zenject\MainMonoInstaller.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Move.cs" />
     <Compile Include="Assets\_Scripts\Units\Player.cs" />
-    <Compile Include="Assets\_Scripts\Bullets\IShooter.cs" />
-    <Compile Include="Assets\_Scripts\Bullets\Bullet.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Bullets\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\EnemyBehaviourStateMachine.cs" />
-    <Compile Include="Assets\_Scripts\Bullets\BulletFactory.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Bullets\BulletFactory.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Idle.cs" />
     <Compile Include="Assets\_Scripts\Units\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\UnitBehaviour.cs" />
     <Compile Include="Assets\_Scripts\GameConfiguration.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\UnitBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviour.cs" />
+    <Compile Include="Assets\_Scripts\Damage\AttackData.cs" />
+    <Compile Include="Assets\_Scripts\Damage\AttackStats.cs" />
+    <Compile Include="Assets\_Scripts\Damage\RangedData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\OutlineEffectShader.shader" />
@@ -706,6 +707,22 @@
     <ProjectReference Include="Zenject-Editor.csproj">
       <Project>{2BE1FE35-FA8C-F559-197A-12ABB64A390A}</Project>
       <Name>Zenject-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsExamples.csproj">
+      <Project>{CA8080EF-D78C-C974-BC4D-E12DFD80E9BB}</Project>
+      <Name>NavMeshComponentsExamples</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{49AE0914-394D-66E0-623E-ECFE4BE5EE6F}</Project>
+      <Name>NavMeshComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{3B4CF3D9-6507-9B26-4C29-A0A3BDC6571C}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsExamplesEditor.csproj">
+      <Project>{41FE4D80-1501-201C-80E2-7CF53A48699C}</Project>
+      <Name>NavMeshComponentsExamplesEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
