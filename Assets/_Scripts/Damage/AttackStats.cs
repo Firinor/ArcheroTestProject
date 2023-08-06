@@ -1,5 +1,8 @@
-﻿public struct AttackStats
+﻿namespace Damage
 {
-    public int damage;
-    public float attackRate;
+    public struct AttackStats
+    {
+        public int Damage;
+        public float AttackRate;
+    }
 }

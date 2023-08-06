@@ -1,3 +1,4 @@
+using Damage;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -5,6 +6,7 @@ using UnityEngine.AI;
 public abstract class Unit : MonoBehaviour
 {
     protected UnitStats Stats;
+    protected Weapon weapon;
 
     public Action<Unit> OnDeath;
     public Vector2 MovePoint { get; protected set; }
@@ -14,10 +16,6 @@ public abstract class Unit : MonoBehaviour
     {
         NavMeshAgent = GetComponent<NavMeshAgent>();
     }
-
-    //public virtual void SetBehavior<TBehaviour>(TBehaviour newBehavior) where TBehaviour : UnitBehaviour
-    //{
-    //}
 
     protected virtual void Death()
     {

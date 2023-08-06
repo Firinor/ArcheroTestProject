@@ -57,9 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\NavMeshComponents-master\NavMeshComponents-master\Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
+    <Compile Include="Assets\Plugins\NavMeshComponents-master\NavMeshComponents-master\Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <Compile Include="Assets\Plugins\NavMeshComponents-master\NavMeshComponents-master\Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
     <Compile Include="Assets\Plugins\NavMeshComponents-master\NavMeshComponents-master\Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
-    <Compile Include="Assets\Plugins\NavMeshComponents-master\NavMeshComponents-master\Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\NavMeshComponents-master\NavMeshComponents-master\Assets\NavMeshComponents\Scripts\NavMeshComponents.asmdef" />

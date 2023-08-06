@@ -711,18 +711,6 @@
       <Project>{EB555643-D392-CAE7-2230-4DA1BA6C7587}</Project>
       <Name>Zenject</Name>
     </ProjectReference>
-    <ProjectReference Include="Zenject-Editor.csproj">
-      <Project>{2BE1FE35-FA8C-F559-197A-12ABB64A390A}</Project>
-      <Name>Zenject-Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="NavMeshComponentsExamples.csproj">
-      <Project>{CA8080EF-D78C-C974-BC4D-E12DFD80E9BB}</Project>
-      <Name>NavMeshComponentsExamples</Name>
-    </ProjectReference>
-    <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{49AE0914-394D-66E0-623E-ECFE4BE5EE6F}</Project>
-      <Name>NavMeshComponents</Name>
-    </ProjectReference>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
       <Project>{3B4CF3D9-6507-9B26-4C29-A0A3BDC6571C}</Project>
       <Name>NavMeshComponentsEditor</Name>
@@ -730,6 +718,18 @@
     <ProjectReference Include="NavMeshComponentsExamplesEditor.csproj">
       <Project>{41FE4D80-1501-201C-80E2-7CF53A48699C}</Project>
       <Name>NavMeshComponentsExamplesEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsExamples.csproj">
+      <Project>{CA8080EF-D78C-C974-BC4D-E12DFD80E9BB}</Project>
+      <Name>NavMeshComponentsExamples</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-Editor.csproj">
+      <Project>{2BE1FE35-FA8C-F559-197A-12ABB64A390A}</Project>
+      <Name>Zenject-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{49AE0914-394D-66E0-623E-ECFE4BE5EE6F}</Project>
+      <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

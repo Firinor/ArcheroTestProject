@@ -3,13 +3,12 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 using PlayerBehaviourNamespace;
+using Damage;
 
 public class Player : Unit
 {
     [Inject]
     private VisibleFloatingJoystick joystick;
-    [Inject]
-    private BulletFactory bulletFactory;
     [Inject]
     private Level level;
 
@@ -19,6 +18,10 @@ public class Player : Unit
     private Aim aim;
     [SerializeField]
     private UnitStats basisStats;
+    [SerializeField]
+    private Weapon attackScript;
+    [SerializeField]
+    private AttackData attackData;
     private PlayerBehaviourStateMachine behavior;
     [SerializeField]
     private CurrentStats currentStats;
@@ -77,24 +80,19 @@ public class Player : Unit
     }
     public void Attack()
     {
-        if (currentStats.Cooldown <= 0 && TargetIsInSight(Target))
-        {
-            currentStats.Cooldown += basisStats.AttackRate;
-            bulletFactory.Create();
-        }
+        //attackScript.Attack(GenerateAttackData());
     }
 
-    //private ShooterData GenerateShooterData()
-    //{
-    //    return new ShooterData()
-    //    {
-    //        owner = this,
-    //        damage = basisStats.Damage,
-    //        spawnPosition = bulletSpawnPoint.position,
-    //        target = Target,
-    //        tagMask = new string[]{ "Enemy", "Ground" }
-    //    };
-    //}
+    private AttackData GenerateAttackData()
+    {
+        return new AttackData()
+        {
+            owner = this,
+            damage = basisStats.Damage,
+            //target = Target,
+            //tagMask = new string[] { "Enemy", "Ground" }
+        };
+    }
 
     public void FindEnemy()
     {
@@ -121,7 +119,7 @@ public class Player : Unit
         //                        select enemy;
         return sortedEnemies;
     }
-    private bool TargetIsInSight(Vector3 target)
+    public bool TargetIsInSight(Vector3 target)
     {
         Ray ray = new Ray(bulletSpawnPoint.position, DirectionTo(target));
 

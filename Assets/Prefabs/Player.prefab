@@ -45,6 +45,8 @@ MonoBehaviour:
   startBehavior: {fileID: 11400000, guid: 4aa9ef503374f064192ac63522eeb454, type: 2}
   aim: {fileID: 0}
   basisStats: {fileID: 11400000, guid: d49cfc58b9291cd4998222cb4376e0c5, type: 2}
+  attackScript:
+    attack: {fileID: 11400000, guid: 16ab27666804cf94eb01d313cfe4c3d6, type: 2}
   bulletSpawnPoint: {fileID: 6128536945965170263}
 --- !u!1001 &4243259166246889633
 PrefabInstance:

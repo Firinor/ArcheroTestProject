@@ -1,28 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
-public class BulletFactory : MonoBehaviour
+namespace Damage
 {
-    [SerializeField]
-    private List<Bullet> bullets;
-    [SerializeField]
-    private Bullet prefab;
-    [Inject]
-    private GameConfiguration configuration;
-
-    public void Create()
+    public class BulletFactory : MonoBehaviour
     {
-        BulletData bulletData = new BulletData(configuration.BulletSpeed, configuration.BulletLifeTime);
+        [SerializeField]
+        private List<Bullet> bullets;
+        [SerializeField]
+        private Bullet prefab;
 
-        Bullet result = bullets.Find(b => !b.gameObject.activeSelf);
-
-        if (result == null)
+        public void Create(BulletData bulletData)
         {
-            result = Instantiate(prefab, transform);
-            bullets.Add(result);
-        }
+            Bullet result = bullets.Find(b => !b.gameObject.activeSelf);
 
-        result.Init(bulletData);
+            if (result == null)
+            {
+                result = Instantiate(prefab, transform);
+                bullets.Add(result);
+            }
+
+            result.Init(bulletData);
+        }
     }
 }
