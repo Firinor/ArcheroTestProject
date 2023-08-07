@@ -83,16 +83,16 @@ public class Player : Unit
         //attackScript.Attack(GenerateAttackData());
     }
 
-    private AttackData GenerateAttackData()
-    {
-        return new AttackData()
-        {
-            owner = this,
-            damage = basisStats.Damage,
-            //target = Target,
-            //tagMask = new string[] { "Enemy", "Ground" }
-        };
-    }
+    //private AttackData GenerateAttackData()
+    //{
+    //    return new AttackData()
+    //    {
+    //        owner = this,
+    //        damage = basisStats.Damage,
+    //        //target = Target,
+    //        //tagMask = new string[] { "Enemy", "Ground" }
+    //    };
+    //}
 
     public void FindEnemy()
     {

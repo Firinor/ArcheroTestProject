@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Attack.cs" />
     <Compile Include="Assets\_Scripts\Level.cs" />
-    <Compile Include="Assets\_Scripts\Damage\AttackStats.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Damage\Bullets\BulletData.cs" />
     <Compile Include="Assets\_Scripts\Zenject\UnitsInstaller.cs" />
@@ -68,11 +67,10 @@
     <Compile Include="Assets\_Scripts\Units\Unit.cs" />
     <Compile Include="Assets\_Scripts\Units\UnitStats.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Move.cs" />
-    <Compile Include="Assets\_Scripts\Damage\MeleeAttack.cs" />
-    <Compile Include="Assets\_Scripts\Damage\RangedAttack.cs" />
     <Compile Include="Assets\_Scripts\Units\PlayerHelper\Aim.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\EnemyBehaviour.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Overwatch.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Zenject\MainMonoInstaller.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Move.cs" />
     <Compile Include="Assets\_Scripts\Units\Player.cs" />
@@ -85,9 +83,13 @@
     <Compile Include="Assets\_Scripts\GameConfiguration.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\UnitBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviour.cs" />
-    <Compile Include="Assets\_Scripts\Damage\AttackData.cs" />
-    <Compile Include="Assets\_Scripts\Damage\RangedAttackData.cs" />
-    <Compile Include="Assets\_Scripts\Damage\Weapon.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Behaviour\RangedAttack.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Data\AttackData.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Data\AttackStats.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Data\PackerService.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Behaviour\MeleeAttack.cs" />
+    <Compile Include="Assets\_Scripts\Damage\Data\RangedAttackData.cs" />
+    <Compile Include="Assets\_Scripts\Damage\DefaultAttackData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\OutlineEffectShader.shader" />
