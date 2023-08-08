@@ -10,7 +10,7 @@ namespace Damage
         [SerializeField]
         private Bullet prefab;
 
-        public void Create(BulletData bulletData)
+        public void Create(AttackData attackData)
         {
             Bullet result = bullets.Find(b => !b.gameObject.activeSelf);
 
@@ -20,7 +20,7 @@ namespace Damage
                 bullets.Add(result);
             }
 
-            result.Init(bulletData);
+            result.Init(attackData);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using EnemyBehaviorNamespace;
+﻿using Damage;
+using EnemyBehaviorNamespace;
+using System;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -74,13 +76,19 @@ public class Enemy : Unit
         if (currentStats.Cooldown <= 0)
         {
             currentStats.Cooldown += basisStats.AttackRate;
-            player.Damage(basisStats.Damage);
+            weapon.Attack(GenerateAttackData());
         }
     }
 
-    public override void Damage(float damage)
+    private AttackData GenerateAttackData()
     {
-        currentStats.Helth -= (int)damage;
+        return new AttackData();
+    }
+
+    public override void TakeHit(AttackData attackData)
+    {
+        float damage = packer.GetParameter<float>("Damage", attackData);
+        currentStats.Helth -= damage;
         if (currentStats.Helth <= 0)
             Death();
     }
@@ -93,7 +101,7 @@ public class Enemy : Unit
 
     private class CurrentStats
     {
-        public int Helth;
+        public float Helth;
         public float Cooldown;
     }
 }

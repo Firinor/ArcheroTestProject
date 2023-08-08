@@ -1,30 +1,34 @@
 using UnityEngine;
 using System.Linq;
 using System;
+using Zenject;
 
 namespace Damage
 {
     public class Bullet : MonoBehaviour
     {
-        public Unit Owner { get; private set; }
-        public float damage { get; private set; }
+        [Inject]
+        private PackerService packer;
+
+        private AttackData attackData;
         private float lifeTime;
         private float speed;
         private Vector3 direction;
-        private string[] tagMask;
+        private string[] tagArray;
 
 
-        public void Init(BulletData data)
+        public void Init(AttackData data)
         {
-            //Owner = data.owner;
-            //damage = data.damage;
-            lifeTime = data.lifeTime;
-            //transform.position = data.spawnPosition;
-            speed = data.speed;
-            //transform.LookAt(data.target);
-            //direction = (data.target - data.spawnPosition).normalized;
+            attackData = data;
 
-            //tagMask = data.tagMask;
+            lifeTime = packer.GetParameter<float>(nameof(lifeTime), data);
+            transform.position = packer.GetParameter<Vector3>("SpawnPosition", data);
+            speed = packer.GetParameter<float>("BulletSpeed", data);
+            Vector3 target = packer.GetParameter<Vector3>("AttakedPosition", data);
+            transform.LookAt(target);
+            direction = (target - transform.position).normalized;
+
+            tagArray = packer.GetParameter<string[]>(nameof(tagArray), data);
 
             gameObject.SetActive(true);
         }
@@ -44,22 +48,19 @@ namespace Damage
         private void OnTriggerEnter(Collider other)
         {
             string tag = other.gameObject.tag;
-            if (!Array.Exists(tagMask, mask => mask == tag))
+            if (!Array.Exists(tagArray, mask => mask == tag))
                 return;
 
             if (other.gameObject.TryGetComponent(out Unit unit))
-                unit.Damage(damage);
+                unit.TakeHit(attackData);
 
             Disable();
         }
 
-
-
         private void Disable()
         {
             gameObject.SetActive(false);
-            Owner = null;
-            damage = 0;
+            attackData = null;
         }
     }
 }

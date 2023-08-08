@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5a34e7d874488b44987d760ddda55df, type: 3}
-  m_Name: GameConfiguration
+  m_Script: {fileID: 11500000, guid: fc719398f0049494ab18845b67cb6e93, type: 3}
+  m_Name: DefaultAttackData
   m_EditorClassIdentifier: 
-  BulletLifeTime: 0
-  BulletSpeed: 0
+  Damage: 1
+  BulletLifeTime: 5
+  BulletSpeed: 5
+  BulletPrefab: {fileID: 667280316790430214, guid: 5b594f4aba928f74faf6d5defa608e61, type: 3}

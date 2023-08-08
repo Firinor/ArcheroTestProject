@@ -2,11 +2,15 @@ using Damage;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 public abstract class Unit : MonoBehaviour
 {
     protected UnitStats Stats;
+    [SerializeField]
     protected Weapon weapon;
+    [Inject]
+    protected PackerService packer;
 
     public Action<Unit> OnDeath;
     public Vector2 MovePoint { get; protected set; }
@@ -24,7 +28,7 @@ public abstract class Unit : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void Damage(float damage)
+    public virtual void TakeHit(AttackData attackData)
     {
         
     }

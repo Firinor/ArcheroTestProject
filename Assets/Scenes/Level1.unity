@@ -1065,6 +1065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927400955}
   - component: {fileID: 1927400956}
+  - component: {fileID: 1927400958}
   - component: {fileID: 1927400957}
   m_Layer: 0
   m_Name: BulletsHolder
@@ -1117,10 +1118,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _components:
   - {fileID: 1927400956}
+  - {fileID: 1927400958}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}
   _bindType: 0
+--- !u!114 &1927400958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927400954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e1809abd2c3a846a73f5da6ffb0879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1934156669 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8170153791668043268, guid: c521193742dbf8a4794e7dd654a43d95, type: 3}
@@ -1262,7 +1276,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2059664525}
   - component: {fileID: 2059664524}
-  - component: {fileID: 2059664526}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -1285,8 +1298,7 @@ MonoBehaviour:
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: 17affbbf2862da7468f10a425cb8bfb2, type: 2}
   - {fileID: 11400000, guid: a4df4abeef4dfe0458a45fed937e8fee, type: 2}
-  _monoInstallers:
-  - {fileID: 2059664526}
+  _monoInstallers: []
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -1318,19 +1330,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2059664526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059664523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a6db8eb45b479a4194ecf9ab430792d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletFactory: {fileID: 0}
 --- !u!1 &2071433235
 GameObject:
   m_ObjectHideFlags: 0

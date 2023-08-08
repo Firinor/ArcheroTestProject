@@ -1,17 +1,31 @@
 ﻿using System;
 using UnityEngine;
+using Zenject;
 
 namespace Damage
 {
     [Serializable]
     public class Weapon
     {
-        public MeleeAttack attack;
-        public AttackData data;
+        [Inject]
+        private PackerService packer;
+        [SerializeField]
+        private WeaponBehaviour behaviour;
+        private float Cooldown;
+        public bool isReady => Cooldown <= 0;
 
-        public virtual void Attack()
+        public void Attack(AttackData data)
         {
-            attack.Attack(data);
+            if (Cooldown <= 0)
+            {
+                Cooldown += packer.GetParameter<float>("AttackRate", data);
+                behaviour.Attack(data);
+            }
+        }
+
+        public void CooldownTick(float time)
+        {
+            Cooldown = Math.Max(Cooldown - time, 0f);
         }
     }
 }

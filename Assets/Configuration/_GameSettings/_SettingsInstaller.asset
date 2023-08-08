@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: _SettingsInstaller
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: d3776d711dd93f84a8b829c05d68c1d6, type: 2}
+  defaultAttackDataValues: {fileID: 11400000, guid: 8f6d6ee7b720d7b448b852fddd83f70f, type: 2}

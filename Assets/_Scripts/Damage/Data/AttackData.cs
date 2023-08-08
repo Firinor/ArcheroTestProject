@@ -1,16 +1,16 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Damage
 {
-    public struct AttackData
+    public class AttackData
     {
-        public Unit Attacker { get; set; }
+        public AttackData(AttackContainer data)
+        {
+            Data = data;
+        }
 
-        // string - ID
-        // Type - return T
-        // object - data
-        public Dictionary<KeyValuePair<string, Type>, object> Data;
+        
+        public AttackContainer Data;
     }
 }

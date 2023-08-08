@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891562a0149f5e449ab624e65468c8ab, type: 3}
   m_Name: AttackData
   m_EditorClassIdentifier: 
-  list: []
+  <owner>k__BackingField: {fileID: 0}
+  <damage>k__BackingField: 0

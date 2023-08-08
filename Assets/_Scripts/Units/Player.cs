@@ -19,8 +19,6 @@ public class Player : Unit
     [SerializeField]
     private UnitStats basisStats;
     [SerializeField]
-    private Weapon attackScript;
-    [SerializeField]
     private AttackData attackData;
     private PlayerBehaviourStateMachine behavior;
     [SerializeField]
@@ -55,7 +53,7 @@ public class Player : Unit
         FindEnemy();
 
         Observable.EveryFixedUpdate()
-            .Where(_ => currentStats.Cooldown > 0)
+            .Where(_ => !weapon.isReady)
             .Subscribe(_ => Cooldown())
             .AddTo(disposables);
     }
@@ -76,23 +74,18 @@ public class Player : Unit
     }
     private void Cooldown()
     {
-        currentStats.Cooldown -= Time.fixedDeltaTime;
+        weapon.CooldownTick(Time.fixedDeltaTime);
     }
     public void Attack()
     {
-        //attackScript.Attack(GenerateAttackData());
+        if(TargetIsInSight(Target))
+            weapon.Attack(GenerateAttackData());
     }
 
-    //private AttackData GenerateAttackData()
-    //{
-    //    return new AttackData()
-    //    {
-    //        owner = this,
-    //        damage = basisStats.Damage,
-    //        //target = Target,
-    //        //tagMask = new string[] { "Enemy", "Ground" }
-    //    };
-    //}
+    private AttackData GenerateAttackData()
+    {
+        return new AttackData(new AttackContainer());
+    }
 
     public void FindEnemy()
     {
@@ -149,10 +142,10 @@ public class Player : Unit
         return joystick.Direction.x != 0 || joystick.Direction.y != 0;
     }
 
-    public override void Damage(float damage)
+    public override void TakeHit(AttackData attackData)
     {
-        Debug.Log($"Damage {(int)damage}!");
-        currentStats.Helth -= (int)damage;
+        float damage = packer.GetParameter<float>("Damage", attackData);
+        currentStats.Helth -= damage;
         if (currentStats.Helth <= 0)
             Death();
 
@@ -160,7 +153,7 @@ public class Player : Unit
 
     private class CurrentStats
     {
-        public int Helth;
+        public float Helth;
         public float Cooldown;
         public Enemy Target;
     }
