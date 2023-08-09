@@ -1,6 +1,7 @@
 ﻿using Damage;
 using EnemyBehaviorNamespace;
 using System;
+using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -16,6 +17,8 @@ public class Enemy : Unit
     [SerializeField]
     private UnitStats basisStats;
     private EnemyBehaviourStateMachine behavior;
+    [SerializeField]
+    private Transform bulletSpawnPoint;
 
     [SerializeField]
     private CurrentStats currentStats;
@@ -82,12 +85,28 @@ public class Enemy : Unit
 
     private AttackData GenerateAttackData()
     {
-        return new AttackData();
+        AttackContainer data = new AttackContainer() 
+        {
+            {
+                new KeyValuePair<Stat, Type>( Stat.Damage, typeof(float) ), basisStats.Damage 
+            },
+            {
+                new KeyValuePair<Stat, Type>( Stat.AttackRate, typeof(float) ), basisStats.AttackRate
+            },
+            {
+                new KeyValuePair<Stat, Type>( Stat.SpawnPosition, typeof(Vector3) ), bulletSpawnPoint
+            },
+            {
+                new KeyValuePair<Stat, Type>( Stat.Target, typeof(Vector3) ), Target
+            },
+        };
+
+        return new AttackData(data);
     }
 
     public override void TakeHit(AttackData attackData)
     {
-        float damage = packer.GetParameter<float>("Damage", attackData);
+        float damage = packer.GetParameter<float>(Stat.Damage, attackData);
         currentStats.Helth -= damage;
         if (currentStats.Helth <= 0)
             Death();

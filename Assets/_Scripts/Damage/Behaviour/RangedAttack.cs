@@ -9,6 +9,12 @@ namespace Damage
         [Inject]
         private BulletFactory bulletFactory;
 
+        public void Init(PackerService packer, BulletFactory bulletFactory)
+        {
+            Init(packer);
+            this.bulletFactory = bulletFactory;
+        }
+
         public override void Attack(AttackData data)
         {
             bulletFactory.Create(data);

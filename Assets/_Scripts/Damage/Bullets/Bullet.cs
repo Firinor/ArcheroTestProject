@@ -21,14 +21,14 @@ namespace Damage
         {
             attackData = data;
 
-            lifeTime = packer.GetParameter<float>(nameof(lifeTime), data);
-            transform.position = packer.GetParameter<Vector3>("SpawnPosition", data);
-            speed = packer.GetParameter<float>("BulletSpeed", data);
-            Vector3 target = packer.GetParameter<Vector3>("AttakedPosition", data);
+            lifeTime = packer.GetParameter<float>(Stat.LifeTime, data);
+            transform.position = packer.GetParameter<Vector3>(Stat.SpawnPosition, data);
+            speed = packer.GetParameter<float>(Stat.Speed, data);
+            Vector3 target = packer.GetParameter<Vector3>(Stat.Target, data);
             transform.LookAt(target);
             direction = (target - transform.position).normalized;
 
-            tagArray = packer.GetParameter<string[]>(nameof(tagArray), data);
+            tagArray = packer.GetParameter<string[]>(Stat.Filter, data);
 
             gameObject.SetActive(true);
         }

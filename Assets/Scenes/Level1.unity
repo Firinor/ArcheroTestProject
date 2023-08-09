@@ -145,9 +145,17 @@ PrefabInstance:
       propertyPath: startBehavior
       value: 
       objectReference: {fileID: 11400000, guid: c5e0380bdd32aef4ebae485163f5c817, type: 2}
+    - target: {fileID: -410974333039063826, guid: 9fb3101a6bf82504b9eb37a3342fa4d3, type: 3}
+      propertyPath: bulletSpawnPoint
+      value: 
+      objectReference: {fileID: 1725074518}
+    - target: {fileID: -410974333039063826, guid: 9fb3101a6bf82504b9eb37a3342fa4d3, type: 3}
+      propertyPath: weapon.behaviour
+      value: 
+      objectReference: {fileID: 11400000, guid: 16ab27666804cf94eb01d313cfe4c3d6, type: 2}
     - target: {fileID: 2144760144538583283, guid: 9fb3101a6bf82504b9eb37a3342fa4d3, type: 3}
       propertyPath: m_AgentTypeID
-      value: -1372625422
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827481433219547634, guid: 9fb3101a6bf82504b9eb37a3342fa4d3, type: 3}
       propertyPath: m_RootOrder
@@ -708,6 +716,10 @@ PrefabInstance:
       propertyPath: startBehavior
       value: 
       objectReference: {fileID: 11400000, guid: c5e0380bdd32aef4ebae485163f5c817, type: 2}
+    - target: {fileID: 319491049450356108, guid: a3cfcc58f3f395242b64daf490d184fb, type: 3}
+      propertyPath: weapon.behaviour
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b7278c71c650d140b7427f9c9cac81d, type: 2}
     - target: {fileID: 4827481433219547634, guid: a3cfcc58f3f395242b64daf490d184fb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -785,6 +797,10 @@ PrefabInstance:
       propertyPath: stats
       value: 
       objectReference: {fileID: 11400000, guid: ffb07dd79837ff74293a215ac833d2eb, type: 2}
+    - target: {fileID: -1455888559806772952, guid: 7c1e53dd5cd608d409b417707685d5a4, type: 3}
+      propertyPath: weapon.behaviour
+      value: 
+      objectReference: {fileID: 11400000, guid: 16ab27666804cf94eb01d313cfe4c3d6, type: 2}
     - target: {fileID: 204779902074498199, guid: 7c1e53dd5cd608d409b417707685d5a4, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -957,6 +973,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1725074517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1725074518}
+  m_Layer: 7
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1725074518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725074517}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.71}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1280343713}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1725901316
 PrefabInstance:

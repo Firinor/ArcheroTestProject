@@ -1,51 +1,23 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using UnityEngine;
 using Zenject;
 
 namespace Damage
 {
-    public class PackerService : MonoBehaviour
+    public class PackerService
     {
         [Inject]
         private DefaultAttackDataValues @default;
-        private bool IsThereDefaultValue(string name)
-        {
-            return IsThereDefaultValue(name, out FieldInfo field);
-        }
-        private bool IsThereDefaultValue(string name, out FieldInfo field)
-        {
-            field = @default.GetType().GetField(name);
-            return field != null;
-        }
 
-        public T GetDefaultParameter<T>(string name)
+        public T GetParameter<T>(Stat stat, AttackData attackData)
         {
-            return GetDefaultParameter<T>(name, false);
+            return GetParameter<T>(stat, attackData, false);
         }
-        public T GetDefaultParameter<T>(string name, bool isUnsafe)
-        {
-            if(IsThereDefaultValue(name, out FieldInfo field))
-            {
-                object result = field.GetValue(@default);
-                if (result is T)
-                    return (T)result;
-                else if (isUnsafe)
-                    throw new Exception($"Default value named \"{ name }\" does not match the returned type!");
-            }
-
-            return default;
-        }
-        public T GetParameter<T>(string name, AttackData attackData)
-        {
-            return GetParameter<T>(name, attackData, false);
-        }
-        public T GetParameter<T>(string name, AttackData attackData, bool isUnsafe)
+        public T GetParameter<T>(Stat stat, AttackData attackData, bool isUnsafe)
         {
             object result;
 
-            var key = new KeyValuePair<string, Type> (name, typeof(T));
+            var key = new KeyValuePair<Stat, Type>(stat, typeof(T));
 
             if (attackData.Data.ContainsKey(key))
             {
@@ -53,27 +25,27 @@ namespace Damage
                 if (result is T)
                     return (T)result;
                 else if (isUnsafe)
-                    throw new Exception($"Field named \"{ name }\" does not match the returned type!");
+                    throw new Exception($"Field named \"{ stat }\" does not match the returned type!");
             }
 
-            if (IsThereDefaultValue(name))
+            if (@default.IsThereDefaultValue(stat))
             {
-                return GetDefaultParameter<T>(name, isUnsafe);
+                return @default.GetValue<T>(stat, isUnsafe);
             }
 
             if (isUnsafe)
-                throw new Exception($"No field named \"{ name }\" found in attackData or default values!");
+                throw new Exception($"No field named \"{ stat }\" found in attackData or default values!");
 
             return default;
         }
 
-        public void SetParameter<T>(string ID, T value, ref AttackData attackData)
+        public void SetParameter<T>(Stat stat, T value, ref AttackData attackData)
         {
-            SetParameter(ID, value, ref attackData.Data);
+            SetParameter(stat, value, ref attackData.Data);
         }
-        public void SetParameter<T>(string ID, T value, ref AttackContainer dataDictionary)
+        public void SetParameter<T>(Stat stat, T value, ref AttackContainer dataDictionary)
         {
-            var key = new KeyValuePair<string, Type>(ID, typeof(T));
+            var key = new KeyValuePair<Stat, Type>(stat, typeof(T));
 
             if (dataDictionary.ContainsKey(key))
             {
@@ -83,54 +55,54 @@ namespace Damage
 
             dataDictionary.Add(key, value);
         }
-        public AttackData SetParameters<T>(T dataSource)
-        {
-            var dataDictionary = new AttackContainer();
+        //public AttackData SetParameters<T>(T dataSource)
+        //{
+        //    var dataDictionary = new AttackContainer();
 
-            FieldInfo[] fields = typeof(T).GetFields();
+        //    FieldInfo[] fields = typeof(T).GetFields();
 
-            foreach(FieldInfo field in fields)
-            {
-                string ID = field.Name;
-                Type type = field.FieldType;
-                object value = field.GetValue(dataSource);
-                var key = new KeyValuePair<string, Type>(ID, type);
+        //    foreach (FieldInfo field in fields)
+        //    {
+        //        Stat stat = field.Name;
+        //        Type type = field.FieldType;
+        //        object value = field.GetValue(dataSource);
+        //        var key = new KeyValuePair<Stat, Type>(stat, type);
 
-                if (dataDictionary.ContainsKey(key))
-                {
-                    dataDictionary[key] = value;
-                    continue;
-                }
+        //        if (dataDictionary.ContainsKey(key))
+        //        {
+        //            dataDictionary[key] = value;
+        //            continue;
+        //        }
 
-                dataDictionary.Add(key, value);
-            }
+        //        dataDictionary.Add(key, value);
+        //    }
 
-            return new AttackData(dataDictionary);
-        }
-        public AttackData AddParameters<T>(T dataSource, ref AttackData attackData, bool ifMatchReplace = true)
-        {
-            AttackContainer dataDictionary = attackData.Data;
+        //    return new AttackData(dataDictionary);
+        //}
+        //public AttackData AddParameters<T>(T dataSource, ref AttackData attackData, bool ifMatchReplace = true)
+        //{
+        //    AttackContainer dataDictionary = attackData.Data;
 
-            FieldInfo[] fields = typeof(T).GetFields();
+        //    FieldInfo[] fields = typeof(T).GetFields();
 
-            foreach (FieldInfo field in fields)
-            {
-                string ID = field.Name;
-                Type type = field.FieldType;
-                object value = field.GetValue(dataSource);
-                var key = new KeyValuePair<string, Type>(ID, type);
+        //    foreach (FieldInfo field in fields)
+        //    {
+        //        Stat stat = field.Name;
+        //        Type type = field.FieldType;
+        //        object value = field.GetValue(dataSource);
+        //        var key = new KeyValuePair<Stat, Type>(stat, type);
 
-                if (dataDictionary.ContainsKey(key))
-                {
-                    if(ifMatchReplace)
-                        dataDictionary[key] = value;
-                    continue;
-                }
+        //        if (dataDictionary.ContainsKey(key))
+        //        {
+        //            if (ifMatchReplace)
+        //                dataDictionary[key] = value;
+        //            continue;
+        //        }
 
-                dataDictionary.Add(key, value);
-            }
+        //        dataDictionary.Add(key, value);
+        //    }
 
-            return new AttackData(dataDictionary);
-        }
+        //    return new AttackData(dataDictionary);
+        //}
     }
 }

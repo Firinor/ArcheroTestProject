@@ -10,7 +10,6 @@ namespace Damage
             Data = data;
         }
 
-        
         public AttackContainer Data;
     }
 }

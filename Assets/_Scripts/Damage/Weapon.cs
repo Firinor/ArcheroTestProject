@@ -10,7 +10,7 @@ namespace Damage
         [Inject]
         private PackerService packer;
         [SerializeField]
-        private WeaponBehaviour behaviour;
+        public WeaponBehaviour behaviour;
         private float Cooldown;
         public bool isReady => Cooldown <= 0;
 
@@ -18,7 +18,7 @@ namespace Damage
         {
             if (Cooldown <= 0)
             {
-                Cooldown += packer.GetParameter<float>("AttackRate", data);
+                Cooldown += packer.GetParameter<float>(Stat.AttackRate, data);
                 behaviour.Attack(data);
             }
         }
