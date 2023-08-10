@@ -79,7 +79,7 @@
     <Compile Include="Assets\_Scripts\Damage\Data\PackerService.cs" />
     <Compile Include="Assets\_Scripts\Damage\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Zenject\MainMonoInstaller.cs" />
-    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Move.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Melee\Move.cs" />
     <Compile Include="Assets\_Scripts\Units\Player.cs" />
     <Compile Include="Assets\_Scripts\Damage\Bullets\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\EnemyBehaviourStateMachine.cs" />
@@ -88,10 +88,15 @@
     <Compile Include="Assets\_Scripts\Damage\Behaviour\_WeaponBehaviour.cs" />
     <Compile Include="Assets\_Scripts\Units\Enemy.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\UnitBehaviour.cs" />
-    <Compile Include="Assets\_Scripts\GameConfiguration.cs" />
+    <Compile Include="Assets\_Scripts\GameManager.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\UnitBehaviourStateMachine.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviour.cs" />
     <Compile Include="Assets\_Scripts\Zenject\ServiceLocator\ServiceLocator.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Attack.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Idle.cs" />
+    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Ranged\RangedMove.cs" />
+    <Compile Include="Assets\_Scripts\DoorKeeper.cs" />
+    <Compile Include="Assets\TeleportScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\OutlineEffectShader.shader" />

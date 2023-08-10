@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dcb3afce805bf643a21045d5626135c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startBehavior: {fileID: 11400000, guid: c5e0380bdd32aef4ebae485163f5c817, type: 2}
+  weapon:
+    behaviour: {fileID: 11400000, guid: 2b7278c71c650d140b7427f9c9cac81d, type: 2}
+  startBehavior: {fileID: 11400000, guid: 54f524b8a12696f4f9836b3ecbf591b5, type: 2}
   basisStats: {fileID: 11400000, guid: ffb07dd79837ff74293a215ac833d2eb, type: 2}
+  bulletSpawnPoint: {fileID: 0}
 --- !u!1001 &2144760143821235109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6862675722196558423, guid: 1e4d1039921e45a4ab457f176a439f00, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.68
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6862675722196558423, guid: 1e4d1039921e45a4ab457f176a439f00, type: 3}
       propertyPath: m_LocalPosition.y

@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5e7bc13652173419ad40ef5cfe2e9a, type: 3}
-  m_Name: RangerEnemyStats
+  m_Script: {fileID: 11500000, guid: 95ebbfedc565042458a1b86e1ffe04d2, type: 3}
+  m_Name: RangedIdle
   m_EditorClassIdentifier: 
-  Speed: 1
-  Health: 500
-  Damage: 1
-  AttackRate: 1.5
-  EnemyTag: Player
-  EnemyLayer: Player
+  attack: {fileID: 11400000, guid: ebc689cf5e92d5b4ea810a9a510bd864, type: 2}

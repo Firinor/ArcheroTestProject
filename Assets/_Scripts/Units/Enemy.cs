@@ -1,5 +1,5 @@
 ﻿using Damage;
-using EnemyBehaviorNamespace;
+using EnemyBehaviourNamespace;
 using System;
 using System.Collections.Generic;
 using UniRx;
@@ -10,22 +10,21 @@ public class Enemy : Unit
 {
     [Inject]
     private Level level;
-    private Player player;
+    private Player player => level.Player;
+    public Vector3 Target => player.transform.position;
 
     [SerializeField]
     private EnemyBehavior startBehavior;
+    private EnemyBehaviourStateMachine behavior;
+
     [SerializeField]
     private UnitStats basisStats;
-    private EnemyBehaviourStateMachine behavior;
+    private CurrentStats currentStats;
+
     [SerializeField]
     private Transform bulletSpawnPoint;
 
-    [SerializeField]
-    private CurrentStats currentStats;
-
     private CompositeDisposable disposables = new CompositeDisposable();
-
-    public Vector3 Target => player.transform.position;
 
     public bool IsAlive => currentStats.Helth <= 0;
 
@@ -36,14 +35,11 @@ public class Enemy : Unit
         currentStats = new CurrentStats()
         {
             Helth = basisStats.Health,
-            Cooldown = 0
         };
         NavMeshAgent.speed = basisStats.Speed;
 
-        FindEnemy();
-
         Observable.EveryFixedUpdate()
-            .Where(_ => currentStats.Cooldown > 0)
+            .Where(_ => !weapon.isReady)
             .Subscribe(_ => Cooldown())
             .AddTo(disposables);
     }
@@ -59,26 +55,55 @@ public class Enemy : Unit
         behavior.SetState(newBehavior);
     }
 
-    private void FindEnemy()
-    {
-        player = level.Player;
-    }
     private void Cooldown()
     {
-        currentStats.Cooldown -= Time.fixedDeltaTime;
+        weapon.CooldownTick(Time.fixedDeltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out Player player))
-            Attack(player);
+            Attack();
     }
 
-    public void Attack(Player player)
+    public void LookAtPlayer()
     {
-        if (currentStats.Cooldown <= 0)
+        transform.LookAt(Target);
+    }
+
+    public bool IsPlayerAlive()
+    {
+        if (player == null)
+            return false;
+
+        return player.IsAlive;
+    }
+
+    public bool IsPlayerInSight()
+    {
+        Ray ray = new Ray(bulletSpawnPoint.position, DirectionTo(Target));
+
+        LayerMask mask = new LayerMask();
+        mask.value = LayerMask.GetMask(basisStats.EnemyLayer) + LayerMask.GetMask("Ground");
+
+        if (!Physics.Raycast(ray, out RaycastHit hit, maxDistance: int.MaxValue, layerMask: mask))
+            return false;
+
+        if (hit.collider.tag == basisStats.EnemyTag)
+            return true;
+
+        return false;
+
+        Vector3 DirectionTo(Vector3 target)
         {
-            currentStats.Cooldown += basisStats.AttackRate;
+            return target - bulletSpawnPoint.position;
+        }
+    }
+
+    public void Attack()
+    {
+        if (IsPlayerInSight())
+        {
             weapon.Attack(GenerateAttackData());
         }
     }
@@ -94,13 +119,16 @@ public class Enemy : Unit
                 new KeyValuePair<Stat, Type>( Stat.AttackRate, typeof(float) ), basisStats.AttackRate
             },
             {
-                new KeyValuePair<Stat, Type>( Stat.SpawnPosition, typeof(Vector3) ), bulletSpawnPoint
+                new KeyValuePair<Stat, Type>( Stat.SpawnPosition, typeof(Vector3) ), bulletSpawnPoint.position
             },
             {
                 new KeyValuePair<Stat, Type>( Stat.Target, typeof(Vector3) ), Target
             },
             {
                 new KeyValuePair<Stat, Type>( Stat.Target, typeof(Unit) ), player
+            },
+            {
+                new KeyValuePair<Stat, Type>( Stat.Filter, typeof(string[]) ), new string[]{ basisStats.EnemyTag , "Ground"}
             },
         };
 
@@ -124,6 +152,5 @@ public class Enemy : Unit
     private class CurrentStats
     {
         public float Helth;
-        public float Cooldown;
     }
 }

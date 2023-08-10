@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 1
   BulletLifeTime: 5
-  BulletSpeed: 5
+  BulletSpeed: 25
   BulletPrefab: {fileID: 667280316790430214, guid: 5b594f4aba928f74faf6d5defa608e61, type: 3}

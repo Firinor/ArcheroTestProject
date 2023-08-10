@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EnemyBehaviorNamespace
+namespace EnemyBehaviourNamespace
 {
     public abstract class EnemyBehavior : UnitBehaviour<Enemy>
     {

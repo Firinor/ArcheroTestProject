@@ -53,7 +53,6 @@ namespace Damage
             if (other.gameObject.TryGetComponent(out Unit unit))
                 unit.TakeHit(attackData);
 
-            Debug.Log("OnTriggerEnterDisable");
             Disable();
         }
 

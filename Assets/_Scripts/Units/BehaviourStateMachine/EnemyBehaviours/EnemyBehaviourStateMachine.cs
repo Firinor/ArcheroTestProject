@@ -1,5 +1,5 @@
 ﻿
-namespace EnemyBehaviorNamespace
+namespace EnemyBehaviourNamespace
 {
     public class EnemyBehaviourStateMachine : UnitBehaviorStateMachine<EnemyBehavior, Enemy>
     {

@@ -29,6 +29,8 @@ public class Player : Unit
     [SerializeField]
     private Transform bulletSpawnPoint;
 
+    public bool IsAlive => currentStats.Helth > 0;
+
     public Vector3 Target 
     { 
         get
@@ -122,8 +124,6 @@ public class Player : Unit
             }
         }
 
-        Debug.Log("Blind");
-
         if (IsAnyEnemy())
             currentStats.Target = enemies[0];
         else
@@ -144,10 +144,8 @@ public class Player : Unit
         LayerMask mask = new LayerMask();
         mask.value = LayerMask.GetMask(basisStats.EnemyLayer) + LayerMask.GetMask("Ground");
 
-        Debug.DrawLine(ray.origin, ray.origin + ray.direction);
         if (!Physics.Raycast(ray, out RaycastHit hit, maxDistance: int.MaxValue, layerMask: mask))
             return false;
-        Debug.DrawLine(ray.origin, ray.origin + ray.direction, Color.green, 10);
 
         if (hit.collider.tag == basisStats.EnemyTag)
             return true;

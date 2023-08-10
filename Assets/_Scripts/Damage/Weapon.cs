@@ -18,7 +18,6 @@ namespace Damage
             if (Cooldown <= 0)
             {
                 Cooldown += packer.GetParameter<float>(Stat.AttackRate, data);
-                Debug.Log("Player attack");
                 behaviour.Attack(data);
             }
         }
