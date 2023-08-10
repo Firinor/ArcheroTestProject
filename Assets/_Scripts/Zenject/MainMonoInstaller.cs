@@ -1,4 +1,5 @@
 using Damage;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -10,20 +11,12 @@ public class MainMonoInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<PackerService>().AsSingle().NonLazy();
-        //Container.Bind<AlarmData>().AsSingle();
+        InitServiceLocator();
+    }
 
-        //Container.Bind<ClockViewUtil>().AsSingle();
-        //Container.Bind<AlarmView>().AsSingle();
-        //Container.Bind<TimeView>().AsSingle().NonLazy();
-
-        //Container.Bind<TimeAcquisitionAPI>().AsSingle();
-
-        //Container.BindInstance(backgroundTask).AsSingle();
-        //Container.BindInstance(timeGetter).AsSingle();
-
-        //Container.Bind<TimeState>().AsSingle();
-        //Container.Bind<AlarmState>().AsSingle();
-
-        //Container.BindFactory<Bullet, BulletFactory>().FromInstance(bulletFactory);
+    private void InitServiceLocator()
+    {
+        ServiceLocator.BulletFactory = (BulletFactory)Container.Resolve(typeof(BulletFactory));
+        ServiceLocator.PackerService = (PackerService)Container.Resolve(typeof(PackerService));
     }
 }

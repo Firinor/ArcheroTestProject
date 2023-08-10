@@ -7,8 +7,7 @@ namespace Damage
     [Serializable]
     public class Weapon
     {
-        [Inject]
-        private PackerService packer;
+        private PackerService packer => ServiceLocator.PackerService;
         [SerializeField]
         public WeaponBehaviour behaviour;
         private float Cooldown;
@@ -19,6 +18,7 @@ namespace Damage
             if (Cooldown <= 0)
             {
                 Cooldown += packer.GetParameter<float>(Stat.AttackRate, data);
+                Debug.Log("Player attack");
                 behaviour.Attack(data);
             }
         }

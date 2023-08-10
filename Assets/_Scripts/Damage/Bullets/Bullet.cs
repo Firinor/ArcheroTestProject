@@ -7,8 +7,7 @@ namespace Damage
 {
     public class Bullet : MonoBehaviour
     {
-        [Inject]
-        private PackerService packer;
+        private PackerService packer => ServiceLocator.PackerService;
 
         private AttackData attackData;
         private float lifeTime;
@@ -21,7 +20,7 @@ namespace Damage
         {
             attackData = data;
 
-            lifeTime = packer.GetParameter<float>(Stat.LifeTime, data);
+            lifeTime = packer.GetParameter<float>(Stat.LifeTime, data, isUnsafe: true);
             transform.position = packer.GetParameter<Vector3>(Stat.SpawnPosition, data);
             speed = packer.GetParameter<float>(Stat.Speed, data);
             Vector3 target = packer.GetParameter<Vector3>(Stat.Target, data);
@@ -48,12 +47,13 @@ namespace Damage
         private void OnTriggerEnter(Collider other)
         {
             string tag = other.gameObject.tag;
-            if (!Array.Exists(tagArray, mask => mask == tag))
+            if (!Array.Exists(tagArray, filterTag => filterTag == tag))
                 return;
 
             if (other.gameObject.TryGetComponent(out Unit unit))
                 unit.TakeHit(attackData);
 
+            Debug.Log("OnTriggerEnterDisable");
             Disable();
         }
 

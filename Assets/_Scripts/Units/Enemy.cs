@@ -99,6 +99,9 @@ public class Enemy : Unit
             {
                 new KeyValuePair<Stat, Type>( Stat.Target, typeof(Vector3) ), Target
             },
+            {
+                new KeyValuePair<Stat, Type>( Stat.Target, typeof(Unit) ), player
+            },
         };
 
         return new AttackData(data);

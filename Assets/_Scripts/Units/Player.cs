@@ -52,7 +52,6 @@ public class Player : Unit
             Cooldown = 0
         };
         NavMeshAgent.speed = basisStats.Speed;
-        weapon.behaviour.Init(packer);
         FindEnemy();
 
         Observable.EveryFixedUpdate()
@@ -81,8 +80,10 @@ public class Player : Unit
     }
     public void Attack()
     {
-        if(TargetIsInSight(Target))
+        if (TargetIsInSight(Target))
+        {
             weapon.Attack(GenerateAttackData());
+        }
     }
 
     private AttackData GenerateAttackData()
@@ -96,10 +97,13 @@ public class Player : Unit
                 new KeyValuePair<Stat, Type>( Stat.AttackRate, typeof(float) ), basisStats.AttackRate
             },
             {
-                new KeyValuePair<Stat, Type>( Stat.SpawnPosition, typeof(Vector3) ), bulletSpawnPoint
+                new KeyValuePair<Stat, Type>( Stat.SpawnPosition, typeof(Vector3) ), bulletSpawnPoint.position
             },
             {
                 new KeyValuePair<Stat, Type>( Stat.Target, typeof(Vector3) ), Target
+            },
+            {
+                new KeyValuePair<Stat, Type>( Stat.Filter, typeof(string[]) ), new string[]{ basisStats.EnemyTag , "Ground"}
             },
         };
 
@@ -117,6 +121,8 @@ public class Player : Unit
                 return;
             }
         }
+
+        Debug.Log("Blind");
 
         if (IsAnyEnemy())
             currentStats.Target = enemies[0];
@@ -138,8 +144,10 @@ public class Player : Unit
         LayerMask mask = new LayerMask();
         mask.value = LayerMask.GetMask(basisStats.EnemyLayer) + LayerMask.GetMask("Ground");
 
+        Debug.DrawLine(ray.origin, ray.origin + ray.direction);
         if (!Physics.Raycast(ray, out RaycastHit hit, maxDistance: int.MaxValue, layerMask: mask))
             return false;
+        Debug.DrawLine(ray.origin, ray.origin + ray.direction, Color.green, 10);
 
         if (hit.collider.tag == basisStats.EnemyTag)
             return true;

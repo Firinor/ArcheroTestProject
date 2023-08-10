@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c5e7bc13652173419ad40ef5cfe2e9a, type: 3}
   m_Name: RangerEnemyStats
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 0
   Health: 500
   Damage: 20
   AttackRate: 3
