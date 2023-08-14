@@ -6,7 +6,8 @@ namespace Damage
     [CreateAssetMenu(fileName = "RangedAttack", menuName = "GameScriptable/Weapon/RangedAttack")]
     public class RangedAttack : MeleeAttack
     {
-        private BulletFactory bulletFactory => ServiceLocator.BulletFactory;
+        [Inject]
+        private BulletFactory bulletFactory;
 
         public override void Attack(AttackData data)
         {

@@ -5,7 +5,8 @@ namespace Damage
 {
     public abstract class WeaponBehaviour : ScriptableObject
     {
-        protected PackerService packer => ServiceLocator.PackerService;
+        [Inject]
+        protected PackerService packer;
 
         public abstract void Attack(AttackData data);
     }

@@ -1,26 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Damage
 {
-    public class BulletFactory : MonoBehaviour
+    public class BulletFactory : MonoBehaviour, IFactory<AttackData, Bullet>
     {
         [SerializeField]
         private List<Bullet> bullets;
         [SerializeField]
         private Bullet prefab;
+        [Inject]
+        private DiContainer container;
 
-        public void Create(AttackData attackData)
+
+        public Bullet Create(AttackData param)
         {
             Bullet result = bullets.Find(b => !b.gameObject.activeSelf);
 
             if (result == null)
             {
-                result = Instantiate(prefab, transform);
+                result = container.InstantiatePrefabForComponent<Bullet>(prefab, transform);
+                //result = Instantiate(prefab, transform);
                 bullets.Add(result);
             }
 
-            result.Init(attackData);
+            result.Init(param); 
+
+            return result;
         }
     }
 }

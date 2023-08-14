@@ -16,6 +16,12 @@ public abstract class Unit : MonoBehaviour
     public Vector2 MovePoint { get; protected set; }
     public NavMeshAgent NavMeshAgent { get; private set; }
 
+    [Inject]
+    private void Construct(DiContainer container)
+    {
+        container.Inject(weapon);
+    }
+
     public virtual void Awake()
     {
         NavMeshAgent = GetComponent<NavMeshAgent>();

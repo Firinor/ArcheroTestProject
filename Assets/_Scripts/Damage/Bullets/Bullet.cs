@@ -1,33 +1,32 @@
-using UnityEngine;
-using System.Linq;
 using System;
+using UnityEngine;
 using Zenject;
 
 namespace Damage
 {
     public class Bullet : MonoBehaviour
     {
-        private PackerService packer => ServiceLocator.PackerService;
-
+        [Inject]
+        private PackerService packer;
         private AttackData attackData;
+
         private float lifeTime;
         private float speed;
         private Vector3 direction;
         private string[] tagArray;
 
-
         public void Init(AttackData data)
         {
             attackData = data;
 
-            lifeTime = packer.GetParameter<float>(Stat.LifeTime, data, isUnsafe: true);
-            transform.position = packer.GetParameter<Vector3>(Stat.SpawnPosition, data);
-            speed = packer.GetParameter<float>(Stat.Speed, data);
-            Vector3 target = packer.GetParameter<Vector3>(Stat.Target, data);
+            lifeTime = packer.GetParameter<float>(Stat.LifeTime, attackData, isUnsafe: true);
+            transform.position = packer.GetParameter<Vector3>(Stat.SpawnPosition, attackData);
+            speed = packer.GetParameter<float>(Stat.Speed, attackData);
+            Vector3 target = packer.GetParameter<Vector3>(Stat.Target, attackData);
             transform.LookAt(target);
             direction = (target - transform.position).normalized;
 
-            tagArray = packer.GetParameter<string[]>(Stat.Filter, data);
+            tagArray = packer.GetParameter<string[]>(Stat.Filter, attackData);
 
             gameObject.SetActive(true);
         }
