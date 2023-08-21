@@ -50,7 +50,9 @@ namespace Damage
                 return;
 
             if (other.gameObject.TryGetComponent(out Unit unit))
+            {
                 unit.TakeHit(attackData);
+            }
 
             Disable();
         }

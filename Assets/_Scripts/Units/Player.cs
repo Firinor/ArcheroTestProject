@@ -88,28 +88,14 @@ public class Player : Unit
         }
     }
 
-    private AttackData GenerateAttackData()
+    private object GenerateAttackData()
     {
-        AttackContainer data = new AttackContainer()
-        {
-            {
-                new KeyValuePair<Stat, Type>( Stat.Damage, typeof(float) ), basisStats.Damage
-            },
-            {
-                new KeyValuePair<Stat, Type>( Stat.AttackRate, typeof(float) ), basisStats.AttackRate
-            },
-            {
-                new KeyValuePair<Stat, Type>( Stat.SpawnPosition, typeof(Vector3) ), bulletSpawnPoint.position
-            },
-            {
-                new KeyValuePair<Stat, Type>( Stat.Target, typeof(Vector3) ), Target
-            },
-            {
-                new KeyValuePair<Stat, Type>( Stat.Filter, typeof(string[]) ), new string[]{ basisStats.EnemyTag , "Ground"}
-            },
+        return new {
+            basisStats.Damage,
+            basisStats.AttackRate,
+            Target,
+            Filter = new string[]{ basisStats.EnemyTag , "Ground"}            
         };
-
-        return new AttackData(data);
     }
 
     public void FindEnemy()
@@ -181,5 +167,10 @@ public class Player : Unit
         public float Helth;
         public float Cooldown;
         public Enemy Target;
+
+        public void Select(int i)
+        {
+
+        }
     }
 }

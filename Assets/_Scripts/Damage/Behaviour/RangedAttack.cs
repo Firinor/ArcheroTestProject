@@ -9,7 +9,7 @@ namespace Damage
         [Inject]
         private BulletFactory bulletFactory;
 
-        public override void Attack(AttackData data)
+        public override void Attack(object data)
         {
             bulletFactory.Create(data);
         }

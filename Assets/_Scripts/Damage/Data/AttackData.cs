@@ -5,11 +5,11 @@ namespace Damage
 {
     public class AttackData
     {
-        public AttackData(AttackContainer data)
+        public AttackData(object data)
         {
             Data = data;
         }
 
-        public AttackContainer Data;
+        public object Data;
     }
 }

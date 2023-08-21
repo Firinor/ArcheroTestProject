@@ -8,6 +8,6 @@ namespace Damage
         [Inject]
         protected PackerService packer;
 
-        public abstract void Attack(AttackData data);
+        public abstract void Attack(object data);
     }
 }

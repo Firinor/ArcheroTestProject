@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Damage
 {
-    public class BulletFactory : MonoBehaviour, IFactory<AttackData, Bullet>
+    public class BulletFactory : MonoBehaviour, IFactory<object, Bullet>
     {
         [SerializeField]
         private List<Bullet> bullets;
@@ -14,7 +14,7 @@ namespace Damage
         private DiContainer container;
 
 
-        public Bullet Create(AttackData param)
+        public Bullet Create(object param)
         {
             Bullet result = bullets.Find(b => !b.gameObject.activeSelf);
 
@@ -25,7 +25,7 @@ namespace Damage
                 bullets.Add(result);
             }
 
-            result.Init(param); 
+            //result.Init(param); 
 
             return result;
         }

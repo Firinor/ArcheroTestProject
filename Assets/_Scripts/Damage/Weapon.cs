@@ -20,7 +20,7 @@ namespace Damage
             container.Inject(behaviour);
         }
 
-        public void Attack(AttackData data)
+        public void Attack(object data)
         {
             if (Cooldown <= 0)
             {

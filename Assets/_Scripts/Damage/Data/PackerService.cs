@@ -9,24 +9,26 @@ namespace Damage
         [Inject]
         private DefaultAttackDataValues @default;
 
-        public T GetParameter<T>(Stat stat, AttackData attackData)
+        public T GetParameter<T>(Stat stat, object attackData)
         {
             return GetParameter<T>(stat, attackData, false);
         }
-        public T GetParameter<T>(Stat stat, AttackData attackData, bool isUnsafe)
+        public T GetParameter<T>(Stat stat, object attackData, bool isUnsafe)
         {
             object result;
 
+            var a = attackData.GetType().GetProperty(Stat.Damage.ToString()).GetValue(attackData);
+
             var key = new KeyValuePair<Stat, Type>(stat, typeof(T));
 
-            if (attackData.Data.ContainsKey(key))
-            {
-                result = attackData.Data[key];
-                if (result is T)
-                    return (T)result;
-                else if (isUnsafe)
-                    throw new Exception($"Field named \"{ stat }\" does not match the returned type!");
-            }
+            //if (attackData.Data.ContainsKey(key))
+            //{
+            //    result = attackData.Data[key];
+            //    if (result is T)
+            //        return (T)result;
+            //    else if (isUnsafe)
+            //        throw new Exception($"Field named \"{ stat }\" does not match the returned type!");
+            //}
 
             if (@default.IsThereDefaultValue(stat))
             {
@@ -39,22 +41,18 @@ namespace Damage
             return default;
         }
 
-        public void SetParameter<T>(Stat stat, T value, ref AttackData attackData)
-        {
-            SetParameter(stat, value, ref attackData.Data);
-        }
-        public void SetParameter<T>(Stat stat, T value, ref AttackContainer dataDictionary)
-        {
-            var key = new KeyValuePair<Stat, Type>(stat, typeof(T));
+        //public void SetParameter<T>(Stat stat, T value, object dataDictionary)
+        //{
+        //    var key = new KeyValuePair<Stat, Type>(stat, typeof(T));
 
-            if (dataDictionary.ContainsKey(key))
-            {
-                dataDictionary[key] = value;
-                return;
-            }
+        //    if (dataDictionary.ContainsKey(key))
+        //    {
+        //        dataDictionary[key] = value;
+        //        return;
+        //    }
 
-            dataDictionary.Add(key, value);
-        }
+        //    dataDictionary.Add(key, value);
+        //}
         //public AttackData SetParameters<T>(T dataSource)
         //{
         //    var dataDictionary = new AttackContainer();
