@@ -43,10 +43,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon:
-    behaviour: {fileID: 11400000, guid: 16ab27666804cf94eb01d313cfe4c3d6, type: 2}
-  startBehavior: {fileID: 11400000, guid: 72109bfa8ffa5f94ab618fe3af65318d, type: 2}
-  basisStats: {fileID: 11400000, guid: 8a211c508a5554742aaccbe27a3c31cc, type: 2}
-  bulletSpawnPoint: {fileID: 3011757024610266630}
+    behaviour: {fileID: 11400000, guid: 2b7278c71c650d140b7427f9c9cac81d, type: 2}
+  startBehavior: {fileID: 11400000, guid: 54f524b8a12696f4f9836b3ecbf591b5, type: 2}
+  basisStats: {fileID: 11400000, guid: ffb07dd79837ff74293a215ac833d2eb, type: 2}
+  bulletSpawnPoint: {fileID: 0}
 --- !u!1001 &2144760143821235109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6862675722196558419, guid: 1e4d1039921e45a4ab457f176a439f00, type: 3}
       propertyPath: m_Name
-      value: FlyRangedEnemy
+      value: FlyMeleeEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 6862675722196558419, guid: 1e4d1039921e45a4ab457f176a439f00, type: 3}
       propertyPath: m_Layer
@@ -125,7 +125,7 @@ PrefabInstance:
     - target: {fileID: 6862675722196558421, guid: 1e4d1039921e45a4ab457f176a439f00, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1ddc008862d2e6b4d83dab2b98fc40c1, type: 2}
+      objectReference: {fileID: 2100000, guid: 58eea5dc60c87dd45bfc07f254c2e606, type: 2}
     - target: {fileID: 6862675722196558422, guid: 1e4d1039921e45a4ab457f176a439f00, type: 3}
       propertyPath: m_Mesh
       value: 

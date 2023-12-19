@@ -15,6 +15,6 @@ MonoBehaviour:
   Speed: 1
   Health: 1000
   Damage: 70
-  AttackRate: 2
+  AttackRate: 1
   EnemyTag: Player
   EnemyLayer: Player

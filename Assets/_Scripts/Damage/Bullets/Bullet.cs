@@ -8,19 +8,19 @@ namespace Damage
     {
         [Inject]
         private PackerService packer;
-        private AttackData attackData;
+        private object attackData;
 
         private float lifeTime;
         private float speed;
         private Vector3 direction;
         private string[] tagArray;
 
-        public void Init(AttackData data)
+        public void Init(object data)
         {
             attackData = data;
 
-            lifeTime = packer.GetParameter<float>(Stat.LifeTime, attackData, isUnsafe: true);
-            transform.position = packer.GetParameter<Vector3>(Stat.SpawnPosition, attackData);
+            lifeTime = packer.GetParameter<float>(Stat.LifeTime, attackData);
+            transform.position = packer.GetParameter<Vector3>(Stat.SpawnPosition, attackData, isUnsafe: true);
             speed = packer.GetParameter<float>(Stat.Speed, attackData);
             Vector3 target = packer.GetParameter<Vector3>(Stat.Target, attackData);
             transform.LookAt(target);
@@ -45,8 +45,8 @@ namespace Damage
 
         private void OnTriggerEnter(Collider other)
         {
-            string tag = other.gameObject.tag;
-            if (!Array.Exists(tagArray, filterTag => filterTag == tag))
+            int layer = other.gameObject.layer;
+            if (!Array.Exists(tagArray, filterTag => LayerMask.NameToLayer(filterTag) == layer))
                 return;
 
             if (other.gameObject.TryGetComponent(out Unit unit))

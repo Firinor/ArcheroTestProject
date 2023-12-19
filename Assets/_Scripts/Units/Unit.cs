@@ -34,7 +34,7 @@ public abstract class Unit : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void TakeHit(AttackData attackData)
+    public virtual void TakeHit(object attackData)
     {
         
     }

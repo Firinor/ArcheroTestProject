@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Zenject;
 
 namespace Damage
@@ -9,26 +8,24 @@ namespace Damage
         [Inject]
         private DefaultAttackDataValues @default;
 
-        public T GetParameter<T>(Stat stat, object attackData)
+        public T GetParameter<T>(Stat stat, object data)
         {
-            return GetParameter<T>(stat, attackData, false);
+            return GetParameter<T>(stat, data, false);
         }
-        public T GetParameter<T>(Stat stat, object attackData, bool isUnsafe)
+        public T GetParameter<T>(Stat stat, object data, bool isUnsafe)
         {
-            object result;
+            object value = null;
 
-            var a = attackData.GetType().GetProperty(Stat.Damage.ToString()).GetValue(attackData);
+            var property = data.GetType().GetProperty(stat.ToString());
+            if(property != null )
+                value = property.GetValue(data);
+            else if(isUnsafe)
+                throw new Exception($"It is expected that there will be a type of \"{stat}\" in the data!");
 
-            var key = new KeyValuePair<Stat, Type>(stat, typeof(T));
-
-            //if (attackData.Data.ContainsKey(key))
-            //{
-            //    result = attackData.Data[key];
-            //    if (result is T)
-            //        return (T)result;
-            //    else if (isUnsafe)
-            //        throw new Exception($"Field named \"{ stat }\" does not match the returned type!");
-            //}
+            if (value is T)
+                return (T)value;
+            else if (isUnsafe)
+                throw new Exception($"Field named \"{stat}\" does not match the returned type \"{typeof(T)}\"!");
 
             if (@default.IsThereDefaultValue(stat))
             {
@@ -36,71 +33,9 @@ namespace Damage
             }
 
             if (isUnsafe)
-                throw new Exception($"No field named \"{ stat }\" found in attackData or default values!");
+                throw new Exception($"No field named \"{stat}\" found in attackData or default values!");
 
             return default;
         }
-
-        //public void SetParameter<T>(Stat stat, T value, object dataDictionary)
-        //{
-        //    var key = new KeyValuePair<Stat, Type>(stat, typeof(T));
-
-        //    if (dataDictionary.ContainsKey(key))
-        //    {
-        //        dataDictionary[key] = value;
-        //        return;
-        //    }
-
-        //    dataDictionary.Add(key, value);
-        //}
-        //public AttackData SetParameters<T>(T dataSource)
-        //{
-        //    var dataDictionary = new AttackContainer();
-
-        //    FieldInfo[] fields = typeof(T).GetFields();
-
-        //    foreach (FieldInfo field in fields)
-        //    {
-        //        Stat stat = field.Name;
-        //        Type type = field.FieldType;
-        //        object value = field.GetValue(dataSource);
-        //        var key = new KeyValuePair<Stat, Type>(stat, type);
-
-        //        if (dataDictionary.ContainsKey(key))
-        //        {
-        //            dataDictionary[key] = value;
-        //            continue;
-        //        }
-
-        //        dataDictionary.Add(key, value);
-        //    }
-
-        //    return new AttackData(dataDictionary);
-        //}
-        //public AttackData AddParameters<T>(T dataSource, ref AttackData attackData, bool ifMatchReplace = true)
-        //{
-        //    AttackContainer dataDictionary = attackData.Data;
-
-        //    FieldInfo[] fields = typeof(T).GetFields();
-
-        //    foreach (FieldInfo field in fields)
-        //    {
-        //        Stat stat = field.Name;
-        //        Type type = field.FieldType;
-        //        object value = field.GetValue(dataSource);
-        //        var key = new KeyValuePair<Stat, Type>(stat, type);
-
-        //        if (dataDictionary.ContainsKey(key))
-        //        {
-        //            if (ifMatchReplace)
-        //                dataDictionary[key] = value;
-        //            continue;
-        //        }
-
-        //        dataDictionary.Add(key, value);
-        //    }
-
-        //    return new AttackData(dataDictionary);
-        //}
     }
 }

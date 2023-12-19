@@ -14,7 +14,9 @@ public class DoorKeeper : MonoBehaviour
 
     public void LoadRandomLevel()
     {
-        int nextLevel = Random.Range(0, SceneManager.sceneCountInBuildSettings -1);
+        int nextLevel = Random.Range(
+            minInclusive: 0, 
+            maxExclusive: SceneManager.sceneCountInBuildSettings);
 
         SceneManager.LoadScene(nextLevel);
     }

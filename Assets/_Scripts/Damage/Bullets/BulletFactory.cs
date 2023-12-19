@@ -13,7 +13,6 @@ namespace Damage
         [Inject]
         private DiContainer container;
 
-
         public Bullet Create(object param)
         {
             Bullet result = bullets.Find(b => !b.gameObject.activeSelf);
@@ -25,7 +24,7 @@ namespace Damage
                 bullets.Add(result);
             }
 
-            //result.Init(param); 
+            result.Init(param); 
 
             return result;
         }

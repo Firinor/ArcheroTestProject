@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UnitStats", menuName = "GameScriptable/Stats/UnitStats")]

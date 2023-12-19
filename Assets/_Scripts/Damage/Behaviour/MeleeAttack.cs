@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Damage
@@ -9,8 +8,7 @@ namespace Damage
         public override void Attack(object data)
         {
             Unit attacked = packer.GetParameter<Unit>(Stat.Target, data, isUnsafe: true);
-            //attacked.TakeHit(data);
+            attacked.TakeHit(data);
         }
-
     }
 }

@@ -1,11 +1,9 @@
+using Damage;
+using PlayerBehaviourNamespace;
 using System.Linq;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using PlayerBehaviourNamespace;
-using Damage;
-using System.Collections.Generic;
-using System;
 
 public class Player : Unit
 {
@@ -17,11 +15,7 @@ public class Player : Unit
     [SerializeField]
     private PlayerBehavior startBehavior;
     [SerializeField]
-    private Aim aim;
-    [SerializeField]
     private UnitStats basisStats;
-    [SerializeField]
-    private AttackData attackData;
     private PlayerBehaviourStateMachine behavior;
     [SerializeField]
     private CurrentStats currentStats;
@@ -93,6 +87,7 @@ public class Player : Unit
         return new {
             basisStats.Damage,
             basisStats.AttackRate,
+            SpawnPosition = bulletSpawnPoint.position,
             Target,
             Filter = new string[]{ basisStats.EnemyTag , "Ground"}            
         };
@@ -117,8 +112,9 @@ public class Player : Unit
     }
     private Enemy[] GetSortedEnemies()
     {
-        Enemy[] sortedEnemies = level.Enemies.OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position)).ToArray();
-        //var sortedEnemies = from enemy in level.Enemies
+        Enemy[] sortedEnemies = level.Enemies.OrderBy(
+            enemy => Vector3.Distance(transform.position, enemy.transform.position)).ToArray();
+        //Enemy[] sortedEnemies = from enemy in level.Enemies
         //                        orderby Vector3.Distance(transform.position, enemy.transform.position)
         //                        select enemy;
         return sortedEnemies;
@@ -153,7 +149,7 @@ public class Player : Unit
         return joystick.Direction.x != 0 || joystick.Direction.y != 0;
     }
 
-    public override void TakeHit(AttackData attackData)
+    public override void TakeHit(object attackData)
     {
         float damage = packer.GetParameter<float>(Stat.Damage, attackData);
         currentStats.Helth -= damage;

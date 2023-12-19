@@ -1,7 +1,5 @@
 ﻿using Damage;
 using EnemyBehaviourNamespace;
-using System;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -44,33 +42,30 @@ public class Enemy : Unit
             .AddTo(disposables);
     }
 
-
     private void FixedUpdate()
     {
         behavior.Tick();
     }
-
-    public void SetBehavior(EnemyBehavior newBehavior)
+    private void OnCollisionEnter(Collision collision)
     {
-        behavior.SetState(newBehavior);
+        if (collision.gameObject.TryGetComponent(out Player player))
+        {
+            CollisionAttack();
+        }
     }
 
     private void Cooldown()
     {
         weapon.CooldownTick(Time.fixedDeltaTime);
     }
-
-    private void OnCollisionEnter(Collision collision)
+    public void SetBehavior(EnemyBehavior newBehavior)
     {
-        if (collision.gameObject.TryGetComponent(out Player player))
-            Attack();
+        behavior.SetState(newBehavior);
     }
-
     public void LookAtPlayer()
     {
         transform.LookAt(Target);
     }
-
     public bool IsPlayerAlive()
     {
         if (player == null)
@@ -78,10 +73,15 @@ public class Enemy : Unit
 
         return player.IsAlive;
     }
-
     public bool IsPlayerInSight()
     {
-        Ray ray = new Ray(bulletSpawnPoint.position, DirectionTo(Target));
+        Vector3 startPosition;
+        if (bulletSpawnPoint == null)
+            startPosition = transform.position;
+        else
+            startPosition = bulletSpawnPoint.position;
+
+        Ray ray = new Ray(startPosition, DirectionTo(Target));
 
         LayerMask mask = new LayerMask();
         mask.value = LayerMask.GetMask(basisStats.EnemyLayer) + LayerMask.GetMask("Ground");
@@ -96,53 +96,44 @@ public class Enemy : Unit
 
         Vector3 DirectionTo(Vector3 target)
         {
-            return target - bulletSpawnPoint.position;
+            return target - startPosition;
         }
     }
-
     public void Attack()
     {
         if (IsPlayerInSight())
         {
-            weapon.Attack(GenerateAttackData());
+            weapon.Attack(GenerateRangetData());
         }
     }
-
-    private AttackData GenerateAttackData()
+    private void CollisionAttack()
     {
-        AttackContainer data = new AttackContainer() 
-        {
-            {
-                new KeyValuePair<Stat, Type>( Stat.Damage, typeof(float) ), basisStats.Damage 
-            },
-            {
-                new KeyValuePair<Stat, Type>( Stat.AttackRate, typeof(float) ), basisStats.AttackRate
-            },
-            {
-                new KeyValuePair<Stat, Type>( Stat.SpawnPosition, typeof(Vector3) ), bulletSpawnPoint.position
-            },
-            {
-                new KeyValuePair<Stat, Type>( Stat.Target, typeof(Vector3) ), Target
-            },
-            {
-                new KeyValuePair<Stat, Type>( Stat.Target, typeof(Unit) ), player
-            },
-            {
-                new KeyValuePair<Stat, Type>( Stat.Filter, typeof(string[]) ), new string[]{ basisStats.EnemyTag , "Ground"}
-            },
-        };
-
-        return new AttackData(data);
+        weapon.Attack(GenerateMeleeData());
+    }
+    private object GenerateRangetData()
+    {
+        return new {
+            basisStats.Damage,
+            basisStats.AttackRate,
+            SpawnPosition = bulletSpawnPoint.position,
+            Target,
+            Filter = new string[] { basisStats.EnemyTag, "Ground" }};
+    }
+    private object GenerateMeleeData()
+    {
+        return new {
+            basisStats.Damage,
+            basisStats.AttackRate,
+            Target = player};
     }
 
-    public override void TakeHit(AttackData attackData)
+    public override void TakeHit(object attackData)
     {
         float damage = packer.GetParameter<float>(Stat.Damage, attackData);
         currentStats.Helth -= damage;
         if (currentStats.Helth <= 0)
             Death();
     }
-
     protected override void Death()
     {
 

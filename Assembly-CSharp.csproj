@@ -53,7 +53,7 @@
     <UnityVersion>2020.2.3f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\DoorKeeper.cs" />
@@ -62,27 +62,23 @@
     <Compile Include="Assets\_Scripts\Damage\Utility\DefaultAttackDataValues.cs" />
     <Compile Include="Assets\_Scripts\Level.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\PlayerBehaviourStateMachine.cs" />
-    <Compile Include="Assets\_Scripts\Damage\Bullets\BulletData.cs" />
-    <Compile Include="Assets\_Scripts\Zenject\UnitsInstaller.cs" />
     <Compile Include="Assets\_Scripts\Joystick\VisibleFloatingJoystick.cs" />
     <Compile Include="Assets\_Scripts\Camera\CameraSize.cs" />
     <Compile Include="Assets\_Scripts\Zenject\ScriptableObjectInstaller.cs" />
     <Compile Include="Assets\_Scripts\Units\Unit.cs" />
-    <Compile Include="Assets\_Scripts\Damage\Utility\Abbreviations.cs" />
-    <Compile Include="Assets\_Scripts\Damage\Data\AttackData.cs" />
+    <Compile Include="Assets\_Scripts\Abilities\Debuff.cs" />
     <Compile Include="Assets\_Scripts\Damage\Behaviour\MeleeAttack.cs" />
+    <Compile Include="Assets\_Scripts\Abilities\Enums.cs" />
     <Compile Include="Assets\_Scripts\Units\UnitStats.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Attack.cs" />
     <Compile Include="Assets\_Scripts\Damage\Enum.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Move.cs" />
-    <Compile Include="Assets\_Scripts\Units\PlayerHelper\Aim.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\EnemyBehaviour.cs" />
-    <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\PlayerBehaviours\Overwatch.cs" />
     <Compile Include="Assets\_Scripts\Damage\Data\PackerService.cs" />
     <Compile Include="Assets\_Scripts\Damage\Weapon.cs" />
     <Compile Include="Assets\_Scripts\Zenject\MainMonoInstaller.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\Melee\Move.cs" />
-    <Compile Include="Assets\TeleportScript.cs" />
+    <Compile Include="Assets\_Scripts\TeleportScript.cs" />
     <Compile Include="Assets\_Scripts\Units\Player.cs" />
     <Compile Include="Assets\_Scripts\Damage\Bullets\Bullet.cs" />
     <Compile Include="Assets\_Scripts\Units\BehaviourStateMachine\EnemyBehaviours\EnemyBehaviourStateMachine.cs" />
