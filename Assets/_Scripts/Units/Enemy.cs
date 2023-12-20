@@ -57,6 +57,7 @@ public class Enemy : Unit
     private void Cooldown()
     {
         weapon.CooldownTick(Time.fixedDeltaTime);
+        
     }
     public void SetBehavior(EnemyBehavior newBehavior)
     {
@@ -136,7 +137,6 @@ public class Enemy : Unit
     }
     protected override void Death()
     {
-
         base.Death();
     }
 

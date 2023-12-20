@@ -6,6 +6,7 @@ public class TeleportScript : MonoBehaviour
     public UnityEvent action;
     private void OnTriggerEnter(Collider other)
     {
-        action.Invoke();
+        if(other.tag == "Player")
+            action.Invoke();
     }
 }

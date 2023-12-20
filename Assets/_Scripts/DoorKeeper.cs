@@ -31,6 +31,5 @@ public class DoorKeeper : MonoBehaviour
         door.SetActive(false);
         arrowSign.SetActive(true);
         exitTrigger.SetActive(true);
-
     }
 }
