@@ -14,7 +14,8 @@ public class VisibleFloatingJoystick : Joystick
         //There is bug in ScreenPointToAnchoredPosition(eventData.position),
         //Method RectTransformUtility.ScreenPointToLocalPointInRectangle(baseRect, screenPosition, cam, out localPoint)
         //Returns the value of localPoint incorrectly on the first call.
-        //On the second call, everything starts working correctly. I didn't figure out how to fix this error, so I made the first call here.
+        //On the second call, everything starts working correctly.
+        //I didn't figure out how to fix this error, so I made the first call here.
         SomeFirstCallDebug();
     }
     #region BadCode

@@ -114,9 +114,9 @@ public class Player : Unit
     {
         Enemy[] sortedEnemies = level.Enemies.OrderBy(
             enemy => Vector3.Distance(transform.position, enemy.transform.position)).ToArray();
-        //Enemy[] sortedEnemies = from enemy in level.Enemies
-        //                        orderby Vector3.Distance(transform.position, enemy.transform.position)
-        //                        select enemy;
+        //var sortedEnemies = from enemy in level.Enemies
+        //                    orderby Vector3.Distance(transform.position, enemy.transform.position)
+        //                    select enemy;
         return sortedEnemies;
     }
     public bool TargetIsInSight(Vector3 target)
@@ -163,10 +163,5 @@ public class Player : Unit
         public float Helth;
         public float Cooldown;
         public Enemy Target;
-
-        public void Select(int i)
-        {
-
-        }
     }
 }
